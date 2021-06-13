@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:insure_marts/ui/splash_screen/splash_screen.dart';
+import 'package:insure_marts/ui/auth/signup_screen.dart';
+import 'package:insure_marts/ui/onboard/splash_screen.dart';
 import 'package:insure_marts/util/dialog_manager.dart';
 import 'package:insure_marts/util/dialog_service.dart';
 import 'package:insure_marts/util/navigator.dart';
@@ -26,13 +27,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    cartCount = ValueNotifier<int>(AppCache.getSavedData().length);
     return MultiProvider(
         providers: allProviders,
-      
-
         child: MaterialApp(
-     
           debugShowCheckedModeBanner: false,
         
           theme: ThemeData(
@@ -40,7 +37,7 @@ class MyApp extends StatelessWidget {
                   GoogleFonts.nunitoTextTheme(Theme.of(context).textTheme),
               primaryColor: Colors.white,
               visualDensity: VisualDensity.adaptivePlatformDensity),
-          home:  SplashScreen(),
+          home:  SignupScreen(),
           builder: (BuildContext context, Widget child) => Navigator(
               key: locator<DialogService>().dialogNavigationKey,
               onGenerateRoute: (RouteSettings settings) =>

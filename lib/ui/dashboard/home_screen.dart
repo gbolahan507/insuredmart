@@ -23,6 +23,7 @@ class HomeScreen extends StatelessWidget {
           CustomText('Hello,' , color: Styles.colorBlack.withOpacity(0.5), fontSize: 20,),
           horizontalSpaceTiny,
           CustomText('Joshua' , color: Styles.colorBlack, fontWeight: FontWeight.bold, fontSize: 20,),
+          
           Spacer(),
           Icon(Icons.notifications)
         ],

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:insure_marts/ui/auth/login_screen.dart';
 import 'package:insure_marts/ui/auth/signup_screen.dart';
 import 'package:insure_marts/ui/navigation_screen.dart';
-import 'package:insure_marts/ui/splash_screen/splash_screen.dart';
+import 'package:insure_marts/ui/onboard/splash_screen.dart';
 import 'package:insure_marts/util/constant/routes.dart';
 
 

@@ -14,9 +14,5 @@ class BaseAPI {
       // headers: {'Content-Type': 'application/json'},
       contentType: 'application/json',
       validateStatus: (status) => status < 500);
-  String getToken() {
-    return AppCache.getToken();
-  }
-
   NavigationService navigate = locator<NavigationService>();
 }

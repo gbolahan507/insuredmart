@@ -39,7 +39,6 @@ class AuthViewModel extends BaseModel {
     setBusy(true);
     try {
       userModel = await _authApi.createUser(token, data);
-      AppCache.saveToken(token);
       AppCache.saveUser(userModel);
       navigate.navigateToReplacing(LoginView);
       setBusy(false);

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:insure_marts/ui/auth/login_screen.dart';
-import 'package:insure_marts/ui/splash_screen/splash_content.dart';
+import 'package:insure_marts/ui/onboard/splash_content.dart';
 import 'package:insure_marts/util/spacing.dart';
 import 'package:insure_marts/util/styles.dart';
 import 'package:insure_marts/widget/custom_button.dart';
@@ -18,9 +18,6 @@ class OnboardingScreen1 extends StatefulWidget {
 class _OnboardingScreen1State extends State<OnboardingScreen1> {
     int _currentpage = 0;
   PageController _controller = PageController();
-
-
-
      _onchanged(int index) {
     setState(() {
       _currentpage = index;
