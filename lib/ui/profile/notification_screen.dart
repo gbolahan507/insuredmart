@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:insure_marts/core/provider/all_toggle_provider.dart';
+import 'package:insure_marts/ui/car_upload/car_appbar.dart';
 import 'package:insure_marts/util/spacing.dart';
 import 'package:insure_marts/util/styles.dart';
 import 'package:insure_marts/widget/custom_container.dart';
-import 'package:insure_marts/widget/custom_heading.dart';
 import 'package:insure_marts/widget/custom_switch.dart';
 import 'package:insure_marts/widget/custom_text_widget.dart';
 import 'package:provider/provider.dart';
-
-
 
 class NotificationScreen extends StatelessWidget {
   @override
@@ -16,15 +14,18 @@ class NotificationScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     Provider.of<ToggleData>(context, listen: false).initialdata();
     return Scaffold(
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(70),
+          child: CarAppBar(
+            title: 'Notification',
+          ),
+        ),
         body: Consumer<ToggleData>(
             builder: (_, choose, child) => Container(
                 child: Container(
                     padding: EdgeInsets.symmetric(horizontal: 20),
                     color: Styles.colorWhite,
                     child: ListView(children: [
-                      CustomHeading(
-                        headingText: 'Notifications',
-                      ),
                       NotificationContainer(
                           title: 'All Notifications',
                           value: choose.allNotification,

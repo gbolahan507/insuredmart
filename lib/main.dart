@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:insure_marts/ui/auth/signup_screen.dart';
+import 'package:insure_marts/ui/dashboard/home_screen.dart';
+import 'package:insure_marts/ui/navigation_screen.dart';
 import 'package:insure_marts/ui/onboard/splash_screen.dart';
 import 'package:insure_marts/util/dialog_manager.dart';
 import 'package:insure_marts/util/dialog_service.dart';
@@ -37,7 +39,7 @@ class MyApp extends StatelessWidget {
                   GoogleFonts.nunitoTextTheme(Theme.of(context).textTheme),
               primaryColor: Colors.white,
               visualDensity: VisualDensity.adaptivePlatformDensity),
-          home:  SignupScreen(),
+          home:  NavigationScreen(),
           builder: (BuildContext context, Widget child) => Navigator(
               key: locator<DialogService>().dialogNavigationKey,
               onGenerateRoute: (RouteSettings settings) =>

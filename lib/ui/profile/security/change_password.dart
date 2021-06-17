@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:insure_marts/ui/car_upload/car_appbar.dart';
 import 'package:insure_marts/util/spacing.dart';
 import 'package:insure_marts/util/styles.dart';
 import 'package:insure_marts/util/util.dart';
@@ -16,14 +17,18 @@ class ChangePasswordScreen extends StatelessWidget {
     return GestureDetector(
       onTap: () => Utils.offKeyboard(context),
       child: Scaffold(
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(70),
+          child: CarAppBar(
+            title: 'Change Password',
+          ),
+        ),
         body: Container(
           padding: EdgeInsets.symmetric(horizontal: 20),
           color: Styles.colorWhite,
           child: ListView(
             children: [
-              CustomHeading(
-                headingText: 'Change Password',
-              ),
+              verticalSpaceSmall,
               CustomTextField(
                 title: 'First Name',
                 hintText: 'Aramide',

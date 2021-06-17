@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:insure_marts/ui/car_upload/car_appbar.dart';
 import 'package:insure_marts/util/spacing.dart';
 import 'package:insure_marts/util/styles.dart';
 import 'package:insure_marts/util/util.dart';
@@ -13,14 +14,17 @@ class BvnScreen extends StatelessWidget {
     return GestureDetector(
       onTap: () => Utils.offKeyboard(context),
       child: Scaffold(
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(70),
+          child: CarAppBar(
+            title: 'BVN',
+          ),
+        ),
         body: Container(
           padding: EdgeInsets.symmetric(horizontal: 20),
           color: Styles.colorWhite,
           child: ListView(
             children: [
-              CustomHeading(
-                headingText: 'BVN',
-              ),
               CustomTextField(
                   title: 'BVN',
                   hintText: '10-digit number',

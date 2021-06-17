@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:insure_marts/ui/car_upload/car_appbar.dart';
 import 'package:insure_marts/util/spacing.dart';
 import 'package:insure_marts/util/styles.dart';
 import 'package:insure_marts/util/util.dart';
@@ -19,16 +20,17 @@ class EditProfileScreen extends StatelessWidget {
     return GestureDetector(
       onTap: () => Utils.offKeyboard(context),
       child: Scaffold(
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(70),
+          child: CarAppBar(
+            title: 'Profile',
+          ),
+        ),
         body: Container(
           padding: EdgeInsets.symmetric(horizontal: 20),
           color: Colors.white,
-          // Styles.colorWhite,
           child: ListView(
             children: [
-              CustomHeading(
-                headingText: 'Edit Profile',
-              ),
-              verticalSpaceSmall,
               Row(
                 children: [
                   Container(
@@ -45,7 +47,7 @@ class EditProfileScreen extends StatelessWidget {
                   horizontalSpaceMedium,
                   CustomButton(
                     title: 'UPLOAD IMAGE',
-                    fontSize: 12,
+                    fontSize: 10,
                     height: 35,
                     width: 150,
                     buttonColor: Styles.appBackground1,

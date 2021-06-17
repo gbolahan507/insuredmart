@@ -2,16 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ToggleData extends ChangeNotifier {
-
-  bool ischecked1, ischecked2, ischecked3, ischecked4, ischecked5,
-   facebookconnected, googleconnected,
-   allNotification, newsNotification, insuranceNotification,
-   twoStepVerification;
-  bool custodianAlliedInsuance, leadwayInsurance, allianceInsurance, maniardInsurance;
+  bool ischecked1,
+      ischecked2,
+      ischecked3,
+      ischecked4,
+      ischecked5,
+      facebookconnected,
+      googleconnected,
+      allNotification,
+      newsNotification,
+      insuranceNotification,
+      twoStepVerification;
+  bool custodianAlliedInsuance,
+      leadwayInsurance,
+      allianceInsurance,
+      maniardInsurance;
   String selectedState;
-
-
-
+  int certicate;
 
   ToggleData({
     this.ischecked1 = false,
@@ -31,20 +38,13 @@ class ToggleData extends ChangeNotifier {
     this.leadwayInsurance = false,
     this.maniardInsurance = false,
     notifyListeners(),
-    
     retreiveboolen(),
-    
-
   });
 
 
-
-
-
-   void initialdata() {
+  void initialdata() {
     retreiveboolen();
   }
-
 
   void togglecheck1() {
     ischecked1 = !ischecked1;
@@ -112,41 +112,33 @@ class ToggleData extends ChangeNotifier {
     notifyListeners();
   }
 
+  toggleCustodianAlliedInsurance() {
+    custodianAlliedInsuance = !custodianAlliedInsuance;
+    saveboolen();
+    notifyListeners();
+  }
 
-    
-    toggleCustodianAlliedInsurance(){
-      custodianAlliedInsuance = !custodianAlliedInsuance;
-      saveboolen();
-      notifyListeners();
-    }
+  toggleLeadwayInsurance() {
+    leadwayInsurance = !leadwayInsurance;
+    saveboolen();
+    notifyListeners();
+  }
 
-     toggleLeadwayInsurance(){
-      leadwayInsurance = !leadwayInsurance;
-      saveboolen();
-      notifyListeners();
-    }
+  toggleAllianceInsurance() {
+    allianceInsurance = !allianceInsurance;
+    saveboolen();
+    notifyListeners();
+  }
 
-    toggleAllianceInsurance(){
-      allianceInsurance = !allianceInsurance;
-      saveboolen();
-      notifyListeners();
-    }
-   
-
-    togglemaniardInsurance(){
-      maniardInsurance = !maniardInsurance;
-      saveboolen();
-      notifyListeners();
-    }
-
-
+  togglemaniardInsurance() {
+    maniardInsurance = !maniardInsurance;
+    saveboolen();
+    notifyListeners();
+  }
 
   toggleDropDown(value) {
     selectedState = value;
   }
-
-
-
 
   Future saveboolen() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -165,30 +157,25 @@ class ToggleData extends ChangeNotifier {
     await prefs.setBool('leadwayInsurance', leadwayInsurance);
     await prefs.setBool('maniardInsurance', maniardInsurance);
 
+    
   }
-
 
   Future retreiveboolen() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    ischecked1 =  prefs.getBool('ischecked1') ?? false;
-    ischecked2 = prefs.getBool('ischecked2')  ?? false;
-    ischecked3 = prefs.getBool('ischecked3')   ?? false;
-    ischecked4 = prefs.getBool('ischecked4')   ?? false;
-    ischecked5 = prefs.getBool('ischecked5')   ?? false;
-    facebookconnected = prefs.getBool('facebookconnected')  ?? false;
-    googleconnected = prefs.getBool('googleconnected')  ?? false;
-    newsNotification = prefs.getBool('newsNotification')   ?? false;
-    insuranceNotification = prefs.getBool('insuranceNotification')  ?? false;
-    twoStepVerification = prefs.getBool('twoStepVerification')   ?? false;
-    allianceInsurance = prefs.getBool('allianceInsurance')  ?? false;
+    ischecked1 = prefs.getBool('ischecked1') ?? false;
+    ischecked2 = prefs.getBool('ischecked2') ?? false;
+    ischecked3 = prefs.getBool('ischecked3') ?? false;
+    ischecked4 = prefs.getBool('ischecked4') ?? false;
+    ischecked5 = prefs.getBool('ischecked5') ?? false;
+    facebookconnected = prefs.getBool('facebookconnected') ?? false;
+    googleconnected = prefs.getBool('googleconnected') ?? false;
+    newsNotification = prefs.getBool('newsNotification') ?? false;
+    insuranceNotification = prefs.getBool('insuranceNotification') ?? false;
+    twoStepVerification = prefs.getBool('twoStepVerification') ?? false;
+    allianceInsurance = prefs.getBool('allianceInsurance') ?? false;
     custodianAlliedInsuance = prefs.getBool('custodianAlliedInsuance') ?? false;
-    leadwayInsurance = prefs.getBool('leadwayInsurance')  ?? false;
-    maniardInsurance = prefs.getBool('maniardInsurance')  ?? false;
-
-
+    leadwayInsurance = prefs.getBool('leadwayInsurance') ?? false;
+    maniardInsurance = prefs.getBool('maniardInsurance') ?? false;
     notifyListeners();
-
-
-
   }
 }

@@ -14,6 +14,7 @@ class Styles {
   //  $,
 
   static Color appBackground1 = const Color(0xff03588c);
+  static Color colorGreyLight = const Color(0xffdbd9d9);
   static Color colorWhite = const Color(0xffffffff);
   static Color appBackground2 = const Color(0xff023859);
   static Color colorLightgreen = const Color(0xff03a688);
@@ -29,6 +30,12 @@ class Styles {
   static Color coloratm1 = const Color(0xff8688bc);
   static Color coloratm2 = const Color(0xff232558);
   static Color colorRed = const Color(0xffff0000);
+  static Color colorLightPink = const Color(0xffFDEFE7);
+  static Color colorDeepPink = const Color(0xffEA5B0C);
+  static Color colordeepgrey = const Color(0xffF7F4F4);
+
+
+
 
 
   static Color colorLightPurple = const Color(0xff6D77A2);

@@ -12,6 +12,7 @@ class CustomContainer extends StatelessWidget {
   final padding;
   final margin;
   final borderRadius;
+  final boxShadow;
   final Function onPressed;
   final Color borderColor, checkColor, iconColor, containerColor, checkboxColor;
   final String text;
@@ -28,7 +29,9 @@ class CustomContainer extends StatelessWidget {
       this.padding,
       this.width,
       this.borderWidth,
-      this.checkboxColor, this.borderRadius});
+      this.boxShadow,
+      this.checkboxColor,
+      this.borderRadius});
 
   @override
   Widget build(BuildContext context) {
@@ -42,6 +45,7 @@ class CustomContainer extends StatelessWidget {
         padding: padding ?? EdgeInsets.symmetric(horizontal: 20, vertical: 20),
         decoration: BoxDecoration(
             borderRadius: borderRadius ?? BorderRadius.circular(5),
+            boxShadow: boxShadow,
             border: Border.all(
                 color: borderColor ?? Styles.colorBoxBorder,
                 width: borderWidth ?? 1),

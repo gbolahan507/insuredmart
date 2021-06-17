@@ -37,7 +37,7 @@ class SignupScreen extends StatelessWidget {
             onTap: () => Utils.offKeyboard(context),
             child: Scaffold(
               appBar: AppBar(
-                  elevation: 0,
+                  elevation: 0.0,
                   backgroundColor: Styles.colorWhite,
                   title: CustomText(
                     'Create your account',

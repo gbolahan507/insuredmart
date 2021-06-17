@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:insure_marts/ui/car_upload/car_appbar.dart';
 import 'package:insure_marts/ui/profile/connect_socials.dart';
 import 'package:insure_marts/ui/profile/edit_profile_screen.dart';
 import 'package:insure_marts/ui/profile/my_cards_screen.dart';
@@ -16,31 +17,37 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(70),
+        child: CarAppBar(
+          title: 'Profile',
+          check: true,
+        ),
+      ),
       body: Container(
         padding: EdgeInsets.symmetric(horizontal: 20),
         color: Styles.colorWhite,
         child: ListView(
           children: [
-            CustomHeading(
-              checkIcon: true,
-              headingText: 'Profile',
-              trailingIcon: Icons.notifications,
-              onPressedicon: () {},
-            ),
-            Container(
-              decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  border: Border.all(color: Colors.grey[200])),
-              child: CircleAvatar(
-                radius: 50,
-                backgroundImage: AssetImage(
-                  'images/gbolahan2.png',
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      border: Border.all(color: Colors.grey[200])),
+                  child: CircleAvatar(
+                    radius: 50,
+                    backgroundImage: AssetImage(
+                      'images/gbolahan2.png',
+                    ),
+                  ),
                 ),
-              ),
+              ],
             ),
             CustomText(
               'Oluwafemi Aramide',
-              fontSize: 16,
+              fontSize: 14,
               color: Styles.colorBlack,
               topMargin: 15,
               bottomMargin: 5,
@@ -48,7 +55,7 @@ class ProfileScreen extends StatelessWidget {
             ),
             CustomText(
               'Oluwafemiaramide@gmail.com',
-              fontSize: 14,
+              fontSize: 12,
             ),
 
             verticalSpaceMedium,
@@ -78,15 +85,12 @@ class ProfileScreen extends StatelessWidget {
                           builder: (context) => ConnectSocialsScreen()));
                 }),
             CustomRowTile(
-                leadingIcon: Icons.payment, title: 'My Cards',
-                 onTap: () {
-                     Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => MyCardScreen()));
-          
-                   
-                 }),
+                leadingIcon: Icons.payment,
+                title: 'My Cards',
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => MyCardScreen()));
+                }),
             CustomRowTile(
                 leadingIcon: Icons.notifications,
                 title: 'Notification Settings',
@@ -95,8 +99,7 @@ class ProfileScreen extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                           builder: (context) => NotificationScreen()));
-          
-           }),
+                }),
             CustomRowTile(
                 leadingIcon: Icons.lock,
                 title: 'Security & Password',

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:insure_marts/ui/car_upload/car_appbar.dart';
 import 'package:insure_marts/util/spacing.dart';
 import 'package:insure_marts/util/styles.dart';
 import 'package:insure_marts/widget/custom_button.dart';
-import 'package:insure_marts/widget/custom_heading.dart';
 import 'package:insure_marts/widget/custom_textfield.dart';
 
 class PhoneNumberScreen extends StatelessWidget {
@@ -12,14 +12,18 @@ class PhoneNumberScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(70),
+        child: CarAppBar(
+          title: 'Phone Number',
+        ),
+      ),
       body: Container(
         padding: EdgeInsets.symmetric(horizontal: 20),
         color: Styles.colorWhite,
         child: ListView(
           children: [
-            CustomHeading(
-              headingText: 'Phone Number',
-            ),
+            verticalSpaceSmall,
             CustomTextField(
               title: 'Phone Number',
               hintText: '08062835641',

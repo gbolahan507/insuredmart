@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:insure_marts/ui/car_upload/car_appbar.dart';
 import 'package:insure_marts/util/spacing.dart';
 import 'package:insure_marts/util/styles.dart';
 import 'package:insure_marts/widget/custom_button.dart';
@@ -18,34 +19,16 @@ class _FilterScreenState extends State<FilterScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(70),
+        child: CarAppBar(
+          title: 'Filter',
+        ),
+      ),
       body: Container(
         color: Styles.colorWhite,
         child: ListView(
           children: [
-            SizedBox(
-              height: screenAwareSize(40, context),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 20),
-              child: Row(
-                children: [
-                  CustomIcon(
-                    size: 18,
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                  ),
-                  horizontalSpaceTiny,
-                  CustomText(
-                    'Filter',
-                    color: Styles.colorBlack,
-                    letterSpacing: 1,
-                    fontWeight: FontWeight.w600,
-                    fontSize: 20,
-                  ),
-                ],
-              ),
-            ),
             verticalSpaceMedium,
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
