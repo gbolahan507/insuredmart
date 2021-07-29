@@ -16,3 +16,17 @@ class BaseAPI {
       validateStatus: (status) => status < 500);
   NavigationService navigate = locator<NavigationService>();
 }
+
+
+
+class BaseProfile {
+  var dio = Dio();
+  String baseUrl = kBaseUrl;
+  Options defaultOptions = Options(
+      sendTimeout: 20000, // 20 seconds
+      receiveTimeout: 20000, // 20 seconds
+      contentType: 'application/json',
+      headers: {'Authorization': "Bearer ${AppCache.getToken()}"},
+      validateStatus: (status) => status < 500);
+  NavigationService navigate = locator<NavigationService>();
+}

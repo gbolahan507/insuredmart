@@ -70,13 +70,14 @@ class CarUploadHeader extends StatelessWidget {
               DotCircle(
                 dotColor: rightDotcolor ?? Styles.appBackground1,
                 onTap: () {
-                  Navigator.pop(context);
+                  // Navigator.pop(context);
                 },
                 padding: EdgeInsets.only(left: 4),
               ),
               horizontalSpaceMedium,
               DotCircle(
-                onTap: forwardOntap,
+                onTap: () {},
+                // forwardOntap,
                 icon: Icons.arrow_forward_ios,
                 dotColor: leftDotColor ?? Styles.appBackground1,
                 // padding: EdgeInsets.only(right:4),

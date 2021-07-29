@@ -1,4 +1,4 @@
-const String kBaseUrl = 'https://aramidev.herokuapp.com';
+const String kBaseUrl = 'https://open-insurance-api.herokuapp.com';
 
 const String SERVER_DOWN = 'Server Down!';
 const String PARSING_ERROR =

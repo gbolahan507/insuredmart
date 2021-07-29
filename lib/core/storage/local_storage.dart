@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:insure_marts/core/models/user_model.dart';
@@ -19,20 +18,33 @@ class AppCache {
   String a = '';
 
 
+    static void saveToken(String token) {
+    if(token == null){
+      return;
+    }
+    _box.put(kToken, token);
+  }
 
-  static void saveUser(UserModel user) {
+  static String getToken() {
+    final String data = _box.get(kToken) as String;
+    return data;
+  }
+
+
+
+  static void saveUser(LoginModel user) {
     if (user == null) {
       return;
     }
     _box.put(kUser, user.toJson());
   }
 
-  static UserModel getUser() {
+  static LoginModel getUser() {
     dynamic data = _box.get(kUser);
     if (data == null) {
       return null;
     }
-    return UserModel.fromJson(data);
+    return LoginModel.fromJson(data);
   }
 
 

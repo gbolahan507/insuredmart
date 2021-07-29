@@ -1,12 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:insure_marts/ui/car_upload/car_appbar.dart';
-import 'package:insure_marts/ui/profile/security/id_verification.dart';
-import 'package:insure_marts/util/spacing.dart';
-import 'package:insure_marts/util/styles.dart';
-import 'package:insure_marts/widget/custom_button.dart';
-import 'package:insure_marts/widget/custom_heading.dart';
-import 'package:insure_marts/widget/custom_text_widget.dart';
-import 'package:insure_marts/widget/dropdown/utility_dropdown.dart';
+import 'package:insure_marts/widget/export.dart';
+
+
 
 class UtilityBill extends StatelessWidget {
   @override
@@ -14,7 +9,7 @@ class UtilityBill extends StatelessWidget {
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(70),
-        child: CarAppBar(
+        child: CustomAppBar(
           title: 'Utility Bil',
         ),
       ),

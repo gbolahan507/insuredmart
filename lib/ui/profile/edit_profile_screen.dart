@@ -1,13 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:insure_marts/ui/car_upload/car_appbar.dart';
-import 'package:insure_marts/util/spacing.dart';
-import 'package:insure_marts/util/styles.dart';
-import 'package:insure_marts/util/util.dart';
-import 'package:insure_marts/widget/custom_button.dart';
-import 'package:insure_marts/widget/custom_heading.dart';
-import 'package:insure_marts/widget/custom_text_widget.dart';
-import 'package:insure_marts/widget/custom_textfield.dart';
-import 'package:insure_marts/widget/dropdown/genderdropdown.dart';
+import 'package:insure_marts/widget/export.dart';
+
+
 
 class EditProfileScreen extends StatelessWidget {
   @override
@@ -22,7 +16,7 @@ class EditProfileScreen extends StatelessWidget {
       child: Scaffold(
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(70),
-          child: CarAppBar(
+          child: CustomAppBar(
             title: 'Profile',
           ),
         ),

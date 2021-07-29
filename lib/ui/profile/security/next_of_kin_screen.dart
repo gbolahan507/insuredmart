@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:insure_marts/ui/car_upload/car_appbar.dart';
-import 'package:insure_marts/util/spacing.dart';
-import 'package:insure_marts/util/styles.dart';
-import 'package:insure_marts/widget/custom_button.dart';
-import 'package:insure_marts/widget/custom_heading.dart';
-import 'package:insure_marts/widget/custom_textfield.dart';
+import 'package:insure_marts/widget/export.dart';
+
 
 class NextKinScreen extends StatelessWidget {
   final _firstName = TextEditingController();
@@ -17,7 +13,7 @@ class NextKinScreen extends StatelessWidget {
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(70),
-        child: CarAppBar(
+        child: CustomAppBar(
           title: 'Next of Kin',
         ),
       ),

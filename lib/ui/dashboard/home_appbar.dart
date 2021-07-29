@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:insure_marts/core/storage/local_storage.dart';
+import 'package:insure_marts/ui/dashboard/dashboard_notification.dart';
+import 'package:insure_marts/util/router.dart';
 import 'package:insure_marts/util/styles.dart';
 import 'package:insure_marts/widget/custom_icon.dart';
 import 'package:insure_marts/widget/custom_textspan_widget.dart';
-
-
 
 class MyAppBar extends StatelessWidget {
   const MyAppBar({
@@ -33,11 +34,11 @@ class MyAppBar extends StatelessWidget {
                 color: Styles.colorBlack,
                 children: <TextSpan>[
                   customTextSpan(
-                    text: 'Joshua',
+                    text: '${AppCache.getUser().user.fullname.toString()}',
                     context: context,
                     fontSize: 14,
                     fontWeight: FontWeight.bold,
-                    color: Styles.colorBlack,
+                    color: Styles.appBackground1,
                   ),
                 ],
               ),
@@ -56,7 +57,8 @@ class MyAppBar extends StatelessWidget {
                   height: 30,
                 ),
                 CustomIcon(
-                  icon: Icons.notification_important,
+                  icon: Icons.notifications,
+                  onPressed: () => routeTo(context, DashBoardNotification()),
                 ),
               ],
             ),

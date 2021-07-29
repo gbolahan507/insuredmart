@@ -1,9 +1,11 @@
+import 'package:flutter/cupertino.dart';
 import 'package:insure_marts/core/api/auth_api.dart';
 import 'package:insure_marts/core/models/user_model.dart';
 import 'package:insure_marts/core/storage/local_storage.dart';
 import 'package:insure_marts/util/constant/routes.dart';
 import 'package:insure_marts/util/error/custom_exception.dart';
-
+import 'package:insure_marts/widget/snackbar.dart';
+import 'package:insure_marts/core/models/sign_up_model.dart';
 import '../../locator.dart';
 import 'base_vm.dart';
 
@@ -12,49 +14,53 @@ class AuthViewModel extends BaseModel {
   String error1;
   String error2;
   String error3;
+  String token;
 
-  UserModel userModel;
+  LoginModel loginModel;
+  SignupModel signupModel;
 
-  // 
 
-  Future<void> loginUser(Map<String, dynamic> data) async {
-    
+  Future<void> createUsers(
+      BuildContext context, Map<String, String> data) async {
     setBusy(true);
     try {
-      userModel = await _authApi.loginUser(data);
-      AppCache.saveUser(userModel);
-      navigate.navigateTo(HomeScreenView);
-      setBusy(false);
-    } on CustomException catch (e) {
-      error2 = e.message;
-      setBusy(false);
-      showErrorDialog(e);
-      notifyListeners();
-    }
-  }
-
-  // SIGN UP
-
-  Future<void> createUser(String token, Map<String, dynamic> data) async {
-    setBusy(true);
-    try {
-      userModel = await _authApi.createUser(token, data);
-      AppCache.saveUser(userModel);
+      signupModel = await _authApi.createUser(data);
+      dialog.showDialog(
+          title: 'Success', description: 'Login into your account');
       navigate.navigateToReplacing(LoginView);
       setBusy(false);
       notifyListeners();
     } on CustomException catch (e) {
-      error1 = e.message;
+      error2 = e.message;
       setBusy(false);
+      showSnackBar(context, 'Error', '${e.message}');
       showErrorDialog(e);
       notifyListeners();
-      return null;
     }
   }
 
-  Future<void> logout() async {
-    await AppCache.clear();
-    navigate.navigateToReplacing(SplashView);
+  Future<void> loginUser(BuildContext context, Map<String, String> data) async {
+    setBusy(true);
+    try {
+      loginModel = await _authApi.loginUsers(data);
+      AppCache.saveToken(loginModel.token);
+      AppCache.saveUser(loginModel);
+      navigate.navigateToReplacing(BottomNavView);
+      setBusy(false);
+      notifyListeners();
+    } on CustomException catch (e) {
+      error2 = e.message;
+      setBusy(false);
+      showSnackBar(context, 'Error', '${e.message}');
+      showErrorDialog(e);
+      notifyListeners();
+    }
+  }
+
+  logout() {
+    _authApi.logOut();
+    // navigate.navigateTo(LogOutView);
+    // SystemNavigator.pop();
     notifyListeners();
   }
 

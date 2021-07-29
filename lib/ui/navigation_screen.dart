@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:insure_marts/ui/dashboard/home_screen.dart';
+import 'package:insure_marts/ui/my_insurance/my_insurance_screen1.dart';
 import 'package:insure_marts/ui/profile/profile_screen.dart';
 import 'package:insure_marts/util/styles.dart';
 
@@ -11,7 +12,7 @@ class NavigationScreen extends StatefulWidget {
 class _NavigationScreenState extends State<NavigationScreen> {
   final List<Widget> _screens = [
     HomeScreen(),
-    Scaffold(),
+    MyInsuranceScreen1(),
     ProfileScreen(),
   ];
 

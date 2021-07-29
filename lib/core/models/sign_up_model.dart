@@ -1,15 +1,35 @@
 // To parse this JSON data, do
 //
-//     final userModel = userModelFromJson(jsonString);
+//     final signupModel = signupModelFromJson(jsonString);
 
 import 'dart:convert';
 
-LoginModel userModelFromJson(String str) => LoginModel.fromJson(json.decode(str));
+SignupModel signupModelFromJson(String str) => SignupModel.fromJson(json.decode(str));
 
-String userModelToJson(LoginModel data) => json.encode(data.toJson());
+String signupModelToJson(SignupModel data) => json.encode(data.toJson());
 
-class LoginModel {
-    LoginModel({
+class SignupModel {
+    SignupModel({
+        this.message,
+        this.data,
+    });
+
+    String message;
+    Data data;
+
+    factory SignupModel.fromJson(Map<String, dynamic> json) => SignupModel(
+        message: json["message"],
+        data: Data.fromJson(json["data"]),
+    );
+
+    Map<String, dynamic> toJson() => {
+        "message": message,
+        "data": data.toJson(),
+    };
+}
+
+class Data {
+    Data({
         this.token,
         this.user,
     });
@@ -17,7 +37,7 @@ class LoginModel {
     String token;
     User user;
 
-    factory LoginModel.fromJson(dynamic json) => LoginModel(
+    factory Data.fromJson(Map<String, dynamic> json) => Data(
         token: json["token"],
         user: User.fromJson(json["user"]),
     );
@@ -37,6 +57,8 @@ class User {
         this.userType,
         this.provider,
         this.address,
+        this.idCard,
+        this.utilityBill,
         this.hasSubscription,
         this.channel,
         this.otp,
@@ -46,10 +68,6 @@ class User {
         this.phone,
         this.email,
         this.password,
-        this.data,
-        this.createdAt,
-        this.updatedAt,
-        this.v,
         this.userId,
     });
 
@@ -60,6 +78,8 @@ class User {
     String userType;
     String provider;
     String address;
+    String idCard;
+    String utilityBill;
     bool hasSubscription;
     String channel;
     dynamic otp;
@@ -69,13 +89,9 @@ class User {
     String phone;
     String email;
     String password;
-    String data;
-    DateTime createdAt;
-    DateTime updatedAt;
-    int v;
     String userId;
 
-    factory User.fromJson( dynamic json) => User(
+    factory User.fromJson(Map<String, dynamic> json) => User(
         authorization: Authorization.fromJson(json["authorization"]),
         fullname: json["fullname"],
         profileUrl: json["profile_url"],
@@ -83,6 +99,8 @@ class User {
         userType: json["userType"],
         provider: json["provider"],
         address: json["address"],
+        idCard: json["idCard"],
+        utilityBill: json["utilityBill"],
         hasSubscription: json["hasSubscription"],
         channel: json["channel"],
         otp: json["otp"],
@@ -92,14 +110,10 @@ class User {
         phone: json["phone"],
         email: json["email"],
         password: json["password"],
-        data: json["data"],
-        createdAt: DateTime.parse(json["createdAt"]),
-        updatedAt: DateTime.parse(json["updatedAt"]),
-        v: json["__v"],
         userId: json["id"],
     );
 
-    Map<dynamic, dynamic> toJson() => {
+    Map<String, dynamic> toJson() => {
         "authorization": authorization.toJson(),
         "fullname": fullname,
         "profile_url": profileUrl,
@@ -107,6 +121,8 @@ class User {
         "userType": userType,
         "provider": provider,
         "address": address,
+        "idCard": idCard,
+        "utilityBill": utilityBill,
         "hasSubscription": hasSubscription,
         "channel": channel,
         "otp": otp,
@@ -116,10 +132,6 @@ class User {
         "phone": phone,
         "email": email,
         "password": password,
-        "data": data,
-        "createdAt": createdAt.toIso8601String(),
-        "updatedAt": updatedAt.toIso8601String(),
-        "__v": v,
         "id": userId,
     };
 }
@@ -131,7 +143,7 @@ class Authorization {
 
     bool isAuthorized;
 
-    factory Authorization.fromJson(dynamic json) => Authorization(
+    factory Authorization.fromJson(Map<String, dynamic> json) => Authorization(
         isAuthorized: json["isAuthorized"],
     );
 

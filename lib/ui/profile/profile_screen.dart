@@ -1,17 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:insure_marts/ui/car_upload/car_appbar.dart';
-import 'package:insure_marts/ui/profile/connect_socials.dart';
-import 'package:insure_marts/ui/profile/edit_profile_screen.dart';
-import 'package:insure_marts/ui/profile/my_cards_screen.dart';
-import 'package:insure_marts/ui/profile/notification_screen.dart';
-import 'package:insure_marts/ui/profile/security/about_us_screen.dart';
-import 'package:insure_marts/ui/profile/security/share_screen.dart';
-import 'package:insure_marts/ui/profile/security_password_screen.dart';
-import 'package:insure_marts/util/spacing.dart';
-import 'package:insure_marts/util/styles.dart';
-import 'package:insure_marts/widget/custom_heading.dart';
-import 'package:insure_marts/widget/custom_icon.dart';
-import 'package:insure_marts/widget/custom_text_widget.dart';
+
+import 'package:insure_marts/widget/export.dart';
+
+
 
 class ProfileScreen extends StatelessWidget {
   @override
@@ -19,7 +10,7 @@ class ProfileScreen extends StatelessWidget {
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(70),
-        child: CarAppBar(
+        child: CustomAppBar(
           title: 'Profile',
           check: true,
         ),
@@ -136,7 +127,10 @@ class ProfileScreen extends StatelessWidget {
                 checkImage: true,
                 image: 'images/logout.png',
                 title: 'Logout',
-                onTap: () {}),
+                onTap: () {
+                  AppCache.clear();
+                  routeToReplace(context, SignupScreen());
+                }),
             // Row(
 
             //

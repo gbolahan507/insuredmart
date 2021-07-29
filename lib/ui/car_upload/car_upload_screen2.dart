@@ -1,13 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:insure_marts/ui/car_upload/car_appbar.dart';
-import 'package:insure_marts/ui/car_upload/car_upload_screen3.dart';
-import 'package:insure_marts/util/spacing.dart';
-import 'package:insure_marts/util/styles.dart';
-import 'package:insure_marts/widget/car_upload_header.dart';
-import 'package:insure_marts/widget/custom_button.dart';
-import 'package:insure_marts/widget/custom_icon.dart';
-import 'package:insure_marts/widget/custom_text_widget.dart';
-import 'package:insure_marts/widget/size_calculator.dart';
+import 'package:insure_marts/widget/export.dart';
+
 
 class CarUploadScreen2 extends StatelessWidget {
   @override
@@ -15,7 +8,7 @@ class CarUploadScreen2 extends StatelessWidget {
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(70),
-        child: CarAppBar(
+        child: CustomAppBar(
           title: 'New Car Insurance',
         ),
       ),

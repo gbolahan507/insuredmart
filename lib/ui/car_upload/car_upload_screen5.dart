@@ -1,20 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:hive/hive.dart';
-import 'package:insure_marts/core/provider/all_toggle_provider.dart';
-import 'package:insure_marts/ui/car_upload/car_appbar.dart';
-import 'package:insure_marts/ui/car_upload/car_upload_screen6.dart';
-import 'package:insure_marts/ui/car_upload/filter_screen.dart';
-import 'package:insure_marts/util/spacing.dart';
-import 'package:insure_marts/util/styles.dart';
-import 'package:insure_marts/widget/bottomsheet/setup_profile.dart';
-import 'package:insure_marts/widget/car_upload_header.dart';
-import 'package:insure_marts/widget/custom_button.dart';
-import 'package:insure_marts/widget/custom_container.dart';
-import 'package:insure_marts/widget/custom_icon.dart';
-import 'package:insure_marts/widget/custom_text_widget.dart';
-import 'package:insure_marts/widget/insurance_container.dart';
-import 'package:insure_marts/widget/size_calculator.dart';
-import 'package:provider/provider.dart';
+import 'package:insure_marts/widget/export.dart';
+
+
+
+
+
+
 
 class CarUploadScreen5 extends StatefulWidget {
   @override
@@ -37,7 +28,7 @@ class _CarUploadScreen5State extends State<CarUploadScreen5> {
     return Scaffold(
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(70),
-          child: CarAppBar(
+          child: CustomAppBar(
             title: 'New Car Insurance',
           ),
         ),
@@ -46,7 +37,6 @@ class _CarUploadScreen5State extends State<CarUploadScreen5> {
                   child: Container(
                     color: Styles.colorWhite,
                     child: Column(children: [
-                      verticalSpaceMedium,
                       CarUploadHeader(
                         rightDotcolor: Styles.colorDeepPink,
                         leftDotColor: Styles.colorDeepPink,
@@ -510,6 +500,9 @@ class Heading extends StatelessWidget {
               CustomIcon(
                 icon: Icons.arrow_drop_down,
                 color: Styles.colorDeepPink,
+                onPressed: () {
+                  routeTo(context, CarUploadScreen6());
+                },
               )
             ],
           ),

@@ -4,7 +4,7 @@ abstract class Utils {
   static void offKeyboard(BuildContext context) {
     final FocusScopeNode currentFocus = FocusScope.of(context);
 
-    TextEditingController password = TextEditingController();
+    // TextEditingController password = TextEditingController();
 
     if (!currentFocus.hasPrimaryFocus) {
       currentFocus.unfocus();

@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:insure_marts/core/provider/all_toggle_provider.dart';
-import 'package:insure_marts/ui/car_upload/car_appbar.dart';
-import 'package:insure_marts/ui/car_upload/car_upload_screen4.dart';
-import 'package:insure_marts/util/spacing.dart';
-import 'package:insure_marts/util/styles.dart';
-import 'package:insure_marts/widget/car_upload_header.dart';
-import 'package:insure_marts/widget/custom_button.dart';
-import 'package:insure_marts/widget/custom_container.dart';
-import 'package:insure_marts/widget/custom_icon.dart';
-import 'package:insure_marts/widget/custom_text_widget.dart';
-import 'package:insure_marts/widget/size_calculator.dart';
-import 'package:provider/provider.dart';
+import 'package:insure_marts/widget/export.dart';
+
+
+
+
+
+
+
+
+
 
 class CarUploadScreen3 extends StatelessWidget {
   @override
@@ -20,7 +18,7 @@ class CarUploadScreen3 extends StatelessWidget {
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(70),
-        child: CarAppBar(
+        child: CustomAppBar(
           title: 'New Car Insurance',
         ),
       ),
@@ -40,7 +38,6 @@ class CarUploadScreen3 extends StatelessWidget {
                                 builder: (context) => CarUploadScreen4()));
                       },
                     ),
-                    verticalSpaceMedium,
                     Expanded(
                       child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 20),

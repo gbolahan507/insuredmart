@@ -39,12 +39,12 @@ Route<dynamic> generateRoute(RouteSettings settings) {
         view:  NavigationScreen(),
         args: settings.arguments,
       );
-    // case PersonalChatScreenView:
-    //   return _getPageRoute(
-    //     routeName: settings.name,
-    //     view: const PersonalChatDetailScreen(),
-    //     args: settings.arguments,
-    //   );
+    case BottomNavView:
+      return _getPageRoute(
+        routeName: settings.name,
+        view:  NavigationScreen(),
+        args: settings.arguments,
+      );
     // case GroupChatScreenView:
     //   return _getPageRoute(
     //     routeName: settings.name,

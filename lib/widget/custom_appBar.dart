@@ -4,13 +4,15 @@ import 'package:insure_marts/util/styles.dart';
 import 'package:insure_marts/widget/custom_icon.dart';
 import 'package:insure_marts/widget/custom_text_widget.dart';
 
-class CarAppBar extends StatelessWidget {
+class CustomAppBar extends StatelessWidget {
   final String title;
   final bool check;
   final color, textColor;
-  const CarAppBar({
+  final Widget widget;
+  const CustomAppBar({
     this.title,
     this.color,
+    this.widget,
     this.textColor,
     this.check = false,
     Key key,
@@ -57,9 +59,10 @@ class CarAppBar extends StatelessWidget {
                     height: 30,
                   ),
                   check
-                      ? CustomIcon(
-                          icon: Icons.notification_important,
-                        )
+                      ? widget ??
+                          CustomIcon(
+                            icon: Icons.notification_important,
+                          )
                       : SizedBox()
                 ],
               ),

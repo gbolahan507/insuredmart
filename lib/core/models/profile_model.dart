@@ -1,29 +1,25 @@
 // To parse this JSON data, do
 //
-//     final userModel = userModelFromJson(jsonString);
+//     final profileModel = profileModelFromJson(jsonString);
 
 import 'dart:convert';
 
-LoginModel userModelFromJson(String str) => LoginModel.fromJson(json.decode(str));
+ProfileModel profileModelFromJson(String str) => ProfileModel.fromJson(json.decode(str));
 
-String userModelToJson(LoginModel data) => json.encode(data.toJson());
+String profileModelToJson(ProfileModel data) => json.encode(data.toJson());
 
-class LoginModel {
-    LoginModel({
-        this.token,
+class ProfileModel {
+    ProfileModel({
         this.user,
     });
 
-    String token;
     User user;
 
-    factory LoginModel.fromJson(dynamic json) => LoginModel(
-        token: json["token"],
+    factory ProfileModel.fromJson(Map<String, dynamic> json) => ProfileModel(
         user: User.fromJson(json["user"]),
     );
 
     Map<String, dynamic> toJson() => {
-        "token": token,
         "user": user.toJson(),
     };
 }
@@ -75,7 +71,7 @@ class User {
     int v;
     String userId;
 
-    factory User.fromJson( dynamic json) => User(
+    factory User.fromJson(Map<String, dynamic> json) => User(
         authorization: Authorization.fromJson(json["authorization"]),
         fullname: json["fullname"],
         profileUrl: json["profile_url"],
@@ -99,7 +95,7 @@ class User {
         userId: json["id"],
     );
 
-    Map<dynamic, dynamic> toJson() => {
+    Map<String, dynamic> toJson() => {
         "authorization": authorization.toJson(),
         "fullname": fullname,
         "profile_url": profileUrl,
@@ -131,7 +127,7 @@ class Authorization {
 
     bool isAuthorized;
 
-    factory Authorization.fromJson(dynamic json) => Authorization(
+    factory Authorization.fromJson(Map<String, dynamic> json) => Authorization(
         isAuthorized: json["isAuthorized"],
     );
 

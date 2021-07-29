@@ -1,15 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:insure_marts/ui/car_upload/car_appbar.dart';
-import 'package:insure_marts/ui/car_upload/car_upload_screen2.dart';
-import 'package:insure_marts/ui/dashboard/home_appbar.dart';
-import 'package:insure_marts/util/spacing.dart';
-import 'package:insure_marts/util/styles.dart';
-import 'package:insure_marts/widget/car_upload_header.dart';
-import 'package:insure_marts/widget/custom_button.dart';
-import 'package:insure_marts/widget/custom_icon.dart';
-import 'package:insure_marts/widget/custom_text_widget.dart';
-import 'package:insure_marts/widget/custom_textfield.dart';
-import 'package:insure_marts/widget/size_calculator.dart';
+import 'package:insure_marts/widget/export.dart';
+
+
 
 class CarUploadScreen1 extends StatelessWidget {
   final _carBrand = TextEditingController();
@@ -21,10 +13,11 @@ class CarUploadScreen1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(70),
-        child: CarAppBar(
+        child: CustomAppBar(
           title: 'New plan',
         ),
       ),

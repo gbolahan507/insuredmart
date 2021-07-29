@@ -1,7 +1,5 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:insure_marts/ui/auth/signup_screen.dart';
-import 'package:insure_marts/ui/dashboard/home_screen.dart';
-import 'package:insure_marts/ui/navigation_screen.dart';
 import 'package:insure_marts/ui/onboard/splash_screen.dart';
 import 'package:insure_marts/util/dialog_manager.dart';
 import 'package:insure_marts/util/dialog_service.dart';
@@ -12,10 +10,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'core/storage/local_storage.dart';
 import 'locator.dart';
 
-
-
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   await AppCache.init(); //Initialize Hive for Flutter
   setupLocator();
   runApp(const MyApp());
@@ -28,18 +25,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return MultiProvider(
         providers: allProviders,
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
-        
           theme: ThemeData(
               textTheme:
                   GoogleFonts.nunitoTextTheme(Theme.of(context).textTheme),
               primaryColor: Colors.white,
               visualDensity: VisualDensity.adaptivePlatformDensity),
-          home:  NavigationScreen(),
+          home: SplashScreen(),
           builder: (BuildContext context, Widget child) => Navigator(
               key: locator<DialogService>().dialogNavigationKey,
               onGenerateRoute: (RouteSettings settings) =>

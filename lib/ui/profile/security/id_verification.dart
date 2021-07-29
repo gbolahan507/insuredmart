@@ -1,14 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:insure_marts/ui/car_upload/car_appbar.dart';
-import 'package:insure_marts/util/spacing.dart';
-import 'package:insure_marts/util/styles.dart';
-import 'package:insure_marts/util/util.dart';
-import 'package:insure_marts/widget/custom_button.dart';
-import 'package:insure_marts/widget/custom_container.dart';
-import 'package:insure_marts/widget/custom_text_widget.dart';
-import 'package:insure_marts/widget/custom_textfield.dart';
-import 'package:insure_marts/widget/dropdown/id_type_dropdown.dart';
-import 'package:insure_marts/widget/size_calculator.dart';
+import 'package:insure_marts/widget/export.dart';
+
 
 class IdVerification extends StatelessWidget {
   final _idNumber = TextEditingController();
@@ -19,7 +11,7 @@ class IdVerification extends StatelessWidget {
       child: Scaffold(
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(70),
-          child: CarAppBar(
+          child: CustomAppBar(
             title: 'ID Verification',
           ),
         ),

@@ -1,12 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:insure_marts/core/provider/all_toggle_provider.dart';
-import 'package:insure_marts/ui/car_upload/car_appbar.dart';
-import 'package:insure_marts/util/spacing.dart';
-import 'package:insure_marts/util/styles.dart';
-import 'package:insure_marts/widget/custom_container.dart';
-import 'package:insure_marts/widget/custom_heading.dart';
-import 'package:insure_marts/widget/custom_text_widget.dart';
-import 'package:provider/provider.dart';
+import 'package:insure_marts/widget/export.dart';
+
+
 
 class ConnectSocialsScreen extends StatelessWidget {
   @override
@@ -15,7 +10,7 @@ class ConnectSocialsScreen extends StatelessWidget {
     return Scaffold(
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(70),
-          child: CarAppBar(
+          child: CustomAppBar(
             title: 'Connect Socials',
           ),
         ),

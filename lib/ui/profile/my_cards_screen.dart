@@ -1,18 +1,9 @@
-import 'package:credit_card/credit_card_widget.dart';
+// import 'package:credit_card/credit_card_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:insure_marts/core/models/card_model.dart';
-import 'package:insure_marts/core/provider/card_provider.dart';
-import 'package:insure_marts/ui/car_upload/car_appbar.dart';
-import 'package:insure_marts/util/spacing.dart';
-import 'package:insure_marts/util/styles.dart';
-import 'package:insure_marts/widget/bottomsheet/add_card_sheet2.dart';
-import 'package:insure_marts/widget/custom_container.dart';
-import 'package:insure_marts/widget/custom_heading.dart';
-import 'package:insure_marts/widget/custom_icon.dart';
-import 'package:insure_marts/widget/custom_text_widget.dart';
 import 'package:insure_marts/widget/dot_circle.dart';
-import 'package:insure_marts/widget/empty_card.dart';
-import 'package:provider/provider.dart';
+import 'package:insure_marts/widget/export.dart';
+
+
 
 class MyCardScreen extends StatefulWidget {
   @override
@@ -29,7 +20,7 @@ class _MyCardScreenState extends State<MyCardScreen> {
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(70),
-        child: CarAppBar(
+        child: CustomAppBar(
           title: 'Connect Socials',
         ),
       ),

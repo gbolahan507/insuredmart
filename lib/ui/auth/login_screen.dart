@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:insure_marts/core/view_model/auth_vm.dart';
 import 'package:insure_marts/ui/auth/forgot_password_screen.dart';
 import 'package:insure_marts/ui/auth/signup_screen.dart';
-import 'package:insure_marts/ui/navigation_screen.dart';
 import 'package:insure_marts/util/constant/base_view.dart';
-import 'package:insure_marts/util/constant/routes.dart';
 import 'package:insure_marts/util/spacing.dart';
 import 'package:insure_marts/util/styles.dart';
 import 'package:insure_marts/util/util.dart';
@@ -14,7 +12,6 @@ import 'package:insure_marts/widget/custom_textfield.dart';
 import 'package:insure_marts/widget/custom_textspan_widget.dart';
 import 'package:insure_marts/widget/size_calculator.dart';
 
-import '../../locator.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -110,7 +107,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         };
                         if (_formKey.currentState.validate()) {
                           print(data);
-                          model.loginUser(data);
+                          model.loginUser(context, data);
                         }
                       },
                     ),

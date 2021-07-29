@@ -1,19 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:insure_marts/core/provider/all_toggle_provider.dart';
-import 'package:insure_marts/ui/car_upload/car_appbar.dart';
-import 'package:insure_marts/ui/profile/security/2_step_verification.dart';
-import 'package:insure_marts/ui/profile/security/bvn_screen.dart';
-import 'package:insure_marts/ui/profile/security/change_password.dart';
-import 'package:insure_marts/ui/profile/security/id_verification.dart';
-import 'package:insure_marts/ui/profile/security/next_of_kin_screen.dart';
-import 'package:insure_marts/ui/profile/security/phone_number.dart';
-import 'package:insure_marts/ui/profile/security/utility_bill.dart';
-import 'package:insure_marts/util/spacing.dart';
-import 'package:insure_marts/util/styles.dart';
-import 'package:insure_marts/widget/custom_container.dart';
-import 'package:insure_marts/widget/custom_icon.dart';
-import 'package:insure_marts/widget/custom_text_widget.dart';
-import 'package:provider/provider.dart';
+
+import 'package:insure_marts/widget/export.dart';
+
 
 class SecurityPasswordScreen extends StatelessWidget {
   @override
@@ -21,7 +9,7 @@ class SecurityPasswordScreen extends StatelessWidget {
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(70),
-        child: CarAppBar(
+        child: CustomAppBar(
           title: 'Security & Password',
         ),
       ),

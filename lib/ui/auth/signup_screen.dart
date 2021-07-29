@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:insure_marts/core/api/auth_api.dart';
 import 'package:insure_marts/core/view_model/auth_vm.dart';
 import 'package:insure_marts/ui/auth/login_screen.dart';
 import 'package:insure_marts/util/constant/base_view.dart';
-import 'package:insure_marts/util/constant/routes.dart';
-import 'package:insure_marts/util/navigator.dart';
-import 'package:insure_marts/util/router.dart';
 import 'package:insure_marts/util/spacing.dart';
 import 'package:insure_marts/util/styles.dart';
 import 'package:insure_marts/util/util.dart';
@@ -14,19 +12,36 @@ import 'package:insure_marts/widget/custom_textfield.dart';
 import 'package:insure_marts/widget/custom_textspan_widget.dart';
 import 'package:insure_marts/widget/size_calculator.dart';
 
-import '../../locator.dart';
+class SignupScreen extends StatefulWidget {
+  @override
+  _SignupScreenState createState() => _SignupScreenState();
+}
 
-class SignupScreen extends StatelessWidget {
+class _SignupScreenState extends State<SignupScreen> {
   final _firstNameController = TextEditingController();
-  final _lastNameController = TextEditingController();
+
+  final _phoneController = TextEditingController();
+
   final _emailController = TextEditingController();
+
   final _passwordController = TextEditingController();
+
   final _repasswordController = TextEditingController();
+
   final _formKey = new GlobalKey<FormState>();
+
+  AuthApi api;
+
+  @override
+  void initState() {
+    api = AuthApi();
+
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
-    final String token = ModalRoute.of(context).settings.arguments as String;
+    // final String token = ModalRoute.of(context).settings.arguments as String;
 
     return BaseView<AuthViewModel>(
         onModelReady: (
@@ -67,10 +82,10 @@ class SignupScreen extends StatelessWidget {
                       verticalSpaceMedium,
                       verticalSpaceTiny,
                       CustomTextField(
-                        hintText: 'Last Name',
-                        title: 'Last Name',
+                        hintText: '08062835561',
+                        title: 'Phone',
                         maxLines: 1,
-                        controller: _lastNameController,
+                        controller: _phoneController,
                         validator: (val) => Utils.isValidName(val),
                       ),
                       verticalSpaceMedium,
@@ -114,14 +129,13 @@ class SignupScreen extends StatelessWidget {
                         onPressed: () {
                           final Map<String, String> data = {
                             "fullname": _firstNameController.text,
-                            "lastName": _lastNameController.text,
+                            "phone": _phoneController.text,
                             "email": _emailController.text,
                             "password": _passwordController.text,
-                            "confirmPassword": _repasswordController.text
                           };
                           if (_formKey.currentState.validate()) {
                             print(data);
-                            model.createUser(token, data);
+                            model.createUsers(context, data);
                           }
                         },
                       ),

@@ -1,13 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:insure_marts/ui/car_upload/car_appbar.dart';
-import 'package:insure_marts/util/spacing.dart';
-import 'package:insure_marts/util/styles.dart';
-import 'package:insure_marts/widget/custom_button.dart';
-import 'package:insure_marts/widget/custom_container.dart';
-import 'package:insure_marts/widget/custom_icon.dart';
-import 'package:insure_marts/widget/custom_text_widget.dart';
+import 'package:insure_marts/widget/export.dart';
 import 'package:insure_marts/widget/policy_term_container.dart';
-import 'package:insure_marts/widget/size_calculator.dart';
+
 
 class FilterScreen extends StatefulWidget {
   @override
@@ -21,7 +15,7 @@ class _FilterScreenState extends State<FilterScreen> {
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(70),
-        child: CarAppBar(
+        child: CustomAppBar(
           title: 'Filter',
         ),
       ),

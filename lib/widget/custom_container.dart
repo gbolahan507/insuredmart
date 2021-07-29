@@ -45,9 +45,15 @@ class CustomContainer extends StatelessWidget {
         padding: padding ?? EdgeInsets.symmetric(horizontal: 20, vertical: 20),
         decoration: BoxDecoration(
             borderRadius: borderRadius ?? BorderRadius.circular(5),
-            boxShadow: boxShadow,
+            boxShadow: boxShadow ??
+                <BoxShadow>[
+                  BoxShadow(
+                      spreadRadius: 0.10,
+                      color: Styles.colorGrey,
+                      blurRadius: 0.1),
+                ],
             border: Border.all(
-                color: borderColor ?? Styles.colorBoxBorder,
+                color: borderColor ?? Styles.colorBoxBorder.withOpacity(0.4),
                 width: borderWidth ?? 1),
             color: containerColor ?? Styles.colorBoxBackground),
         child: widget ??

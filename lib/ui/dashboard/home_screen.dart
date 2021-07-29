@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:insure_marts/core/models/homepage_model.dart';
-import 'package:insure_marts/ui/car_upload/car_upload_screen1.dart';
+import 'package:insure_marts/core/storage/local_storage.dart';
+import 'package:insure_marts/ui/car_upload/pagevies.dart';
 import 'package:insure_marts/ui/dashboard/home_appbar.dart';
 import 'package:insure_marts/util/spacing.dart';
 import 'package:insure_marts/util/styles.dart';
@@ -23,10 +24,15 @@ class HomeScreen extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  CustomText(
-                    'Which insurance do you want to get?',
-                    color: Styles.appBackground2,
-                    fontSize: 14,
+                  InkWell(
+                    onTap: () {
+                      print(AppCache.getUser().user.email);
+                    },
+                    child: CustomText(
+                      'Which insurance do you want to get?',
+                      color: Styles.appBackground2,
+                      fontSize: 14,
+                    ),
                   ),
                 ],
               ),
@@ -47,7 +53,7 @@ class HomeScreen extends StatelessWidget {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => CarUploadScreen1()));
+                                builder: (context) => PageVies()));
                       },
                     );
                   })
