@@ -23,6 +23,7 @@ class CustomTextField extends StatefulWidget {
       this.fillColor,
       this.titleColor,
       this.title,
+      this.bottomMarging,
       this.obscure})
       : super(key: key);
   final TextEditingController controller;
@@ -30,6 +31,7 @@ class CustomTextField extends StatefulWidget {
   final TextInputAction inputAction;
   final FocusNode focusNode;
   final int maxLength;
+  final bottomMarging;
   final int maxLines;
   final bool enabled;
   final bool obscure;
@@ -151,6 +153,9 @@ class _CustomTextFieldState extends State<CustomTextField> {
             validator: widget.validator,
           ),
         ),
+        SizedBox(
+          height: widget.bottomMarging,
+        )
       ],
     );
   }

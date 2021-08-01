@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:insure_marts/widget/export.dart';
 
-
-
 class CarUploadScreen1 extends StatelessWidget {
-  final _carBrand = TextEditingController();
-  final _carModel = TextEditingController();
-  final _mYear = TextEditingController();
-  final _rNumber = TextEditingController();
-  final _cNumber = TextEditingController();
-  final _eNumber = TextEditingController();
+  final _fullNameController = TextEditingController();
+  final _carBrandController = TextEditingController();
+  final _carModelController = TextEditingController();
+  final _monthYearController = TextEditingController();
+  final _registerNumberController = TextEditingController();
+  final _cvvNumberController = TextEditingController();
+  final _expiryNumberController = TextEditingController();
+  final _carColorController = TextEditingController();
+
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(70),
@@ -43,8 +43,17 @@ class CarUploadScreen1 extends StatelessWidget {
                 child: ListView(
                   children: [
                     CustomTextField(
+                      title: 'Full Name of User',
+                      controller: _fullNameController,
+                      hintText: 'Enter Name',
+                      validator: (val) =>
+                          val.isEmpty ? 'Enter car brand' : null,
+                    ),
+                    verticalSpaceSmall,
+                    verticalSpaceMedium,
+                    CustomTextField(
                       title: 'Car Brand',
-                      controller: _carBrand,
+                      controller: _carBrandController,
                       hintText: 'e.g Toyota',
                       validator: (val) =>
                           val.isEmpty ? 'Enter car brand' : null,
@@ -53,7 +62,7 @@ class CarUploadScreen1 extends StatelessWidget {
                     verticalSpaceMedium,
                     CustomTextField(
                       title: 'Car Model',
-                      controller: _carModel,
+                      controller: _carModelController,
                       hintText: 'e.g Camry',
                       validator: (val) =>
                           val.isEmpty ? 'Enter car brand' : null,
@@ -61,8 +70,15 @@ class CarUploadScreen1 extends StatelessWidget {
                     verticalSpaceSmall,
                     verticalSpaceMedium,
                     CustomTextField(
+                        title: 'Car Color',
+                        controller: _carColorController,
+                        hintText: 'e.g Red',
+                        validator: (val) =>
+                            val.isEmpty ? 'Enter car brand' : null,
+                        bottomMarging: 25.0),
+                    CustomTextField(
                       title: 'Manufacture Year',
-                      controller: _mYear,
+                      controller: _monthYearController,
                       hintText: 'e.g 2014',
                       validator: (val) =>
                           val.isEmpty ? 'Enter car brand' : null,
@@ -71,7 +87,7 @@ class CarUploadScreen1 extends StatelessWidget {
                     verticalSpaceMedium,
                     CustomTextField(
                       title: 'Registration Number',
-                      controller: _rNumber,
+                      controller: _registerNumberController,
                       hintText: '10-digit number',
                       validator: (val) =>
                           val.isEmpty ? 'Enter car brand' : null,
@@ -80,7 +96,7 @@ class CarUploadScreen1 extends StatelessWidget {
                     verticalSpaceMedium,
                     CustomTextField(
                       title: 'Chasis Number',
-                      controller: _cNumber,
+                      controller: _cvvNumberController,
                       hintText: '10-digit number',
                       validator: (val) =>
                           val.isEmpty ? 'Enter car brand' : null,
@@ -89,7 +105,7 @@ class CarUploadScreen1 extends StatelessWidget {
                     verticalSpaceMedium,
                     CustomTextField(
                       title: 'Engine Number',
-                      controller: _eNumber,
+                      controller: _expiryNumberController,
                       hintText: '10-digit number',
                       validator: (val) =>
                           val.isEmpty ? 'Enter car brand' : null,

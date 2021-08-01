@@ -24,22 +24,6 @@ class DashBoardNotification extends StatelessWidget {
       ),
       body: Column(
         children: [
-          ListTile(
-            leading: CustomIcon(
-              icon: Icons.notifications,
-            ),
-            title: Transform.translate(
-              offset: Offset(-25, 0),
-              child: CustomText(
-                'Your Claim has been approved',
-                textAlign: TextAlign.left,
-              ),
-            ),
-            subtitle: CustomText(
-              'Your Claim has been approved',
-              textAlign: TextAlign.left,
-            ),
-          ),
           ListTileMoreCustomizable(
             leading: CustomIcon(
               icon: Icons.notifications,

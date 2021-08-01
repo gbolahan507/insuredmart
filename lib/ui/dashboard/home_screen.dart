@@ -1,14 +1,25 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:insure_marts/core/models/homepage_model.dart';
 import 'package:insure_marts/core/storage/local_storage.dart';
-import 'package:insure_marts/ui/car_upload/pagevies.dart';
 import 'package:insure_marts/ui/dashboard/home_appbar.dart';
 import 'package:insure_marts/util/spacing.dart';
 import 'package:insure_marts/util/styles.dart';
+import 'package:insure_marts/widget/bottomsheet/car_inurance_sheet.dart';
+import 'package:insure_marts/widget/bottomsheet/check_profile_sheet.dart';
 import 'package:insure_marts/widget/custom_text_widget.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
+  @override
+  _HomeScreenState createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   final bool comingSoon = false;
+
+  var profile = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,21 +61,31 @@ class HomeScreen extends StatelessWidget {
                       contents: homepages.contents,
                       status: homepages.status,
                       onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => PageVies()));
+                        index == 0
+                            ? setState(() {
+                                profile = !profile;
+                                showProfile();
+                              })
+                            : print(index);
                       },
                     );
                   })
-
-              // HomePageBox()
             ],
           ),
         ),
       ),
     );
   }
+
+  void showProfile() => showModalBottomSheet(
+      context: context,
+      builder: (context) {
+        return profile == false
+            ? ProfileBottomSheet(
+                // onPresseButton:
+                )
+            : CarInsuranceBottomSheet();
+      });
 }
 
 class HomePageBox extends StatelessWidget {
