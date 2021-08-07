@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:insure_marts/widget/export.dart';
 
-
 class MyInsuranceScreen1 extends StatelessWidget {
   const MyInsuranceScreen1({Key key}) : super(key: key);
 
@@ -13,6 +12,7 @@ class MyInsuranceScreen1 extends StatelessWidget {
         preferredSize: Size.fromHeight(70),
         child: CustomAppBar(
           title: 'My Insurance',
+          backbutton: false,
         ),
       ),
       body: Padding(

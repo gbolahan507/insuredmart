@@ -1,16 +1,25 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:insure_marts/widget/export.dart';
 
+class EditProfileScreen extends StatefulWidget {
+  @override
+  _EditProfileScreenState createState() => _EditProfileScreenState();
+}
+
+class _EditProfileScreenState extends State<EditProfileScreen> {
+  final _firstName = TextEditingController();
+  final _lastName = TextEditingController();
+  final _email = TextEditingController();
+  final _address = TextEditingController();
+  XFile _image;
+  final _picker = ImagePicker();
 
 
-class EditProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final _firstName = TextEditingController();
-    final _lastName = TextEditingController();
-    final _email = TextEditingController();
-    final _address = TextEditingController();
-
     return GestureDetector(
       onTap: () => Utils.offKeyboard(context),
       child: Scaffold(
@@ -32,11 +41,12 @@ class EditProfileScreen extends StatelessWidget {
                         shape: BoxShape.circle,
                         border: Border.all(color: Colors.grey[200])),
                     child: CircleAvatar(
-                      radius: 50,
-                      backgroundImage: AssetImage(
-                        'images/gbolahan2.png',
-                      ),
-                    ),
+                        radius: 50,
+                        backgroundImage: _image != null
+                            ? FileImage(File(_image.path))
+                            : AssetImage(
+                                'images/prof.png',
+                              )),
                   ),
                   horizontalSpaceMedium,
                   CustomButton(
@@ -45,6 +55,7 @@ class EditProfileScreen extends StatelessWidget {
                     height: 35,
                     width: 150,
                     buttonColor: Styles.appBackground1,
+                    onPressed: () => takephoto(ImageSource.gallery),
                   )
                 ],
               ),
@@ -106,5 +117,12 @@ class EditProfileScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  takephoto(ImageSource source) async {
+    final _imageFile = await _picker.pickImage(source: source);
+    setState(() {
+      _image = _imageFile;
+    });
   }
 }

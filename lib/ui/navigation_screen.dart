@@ -18,39 +18,55 @@ class _NavigationScreenState extends State<NavigationScreen> {
 
   int _selectedIndex = 0;
 
+  Future<bool> _onWillPop() async {
+    print("on will pop");
+
+    if (_selectedIndex == 0) return true;
+
+    setState(() {
+      _selectedIndex = 0;
+      print(_selectedIndex);
+    });
+
+    return false;
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: IndexedStack(
-          index: _selectedIndex,
-          children: _screens,
-        ),
-        bottomNavigationBar: BottomNavigationBar(
-            backgroundColor: Colors.grey[100],
-            onTap: (index) => setState(() => _selectedIndex = index),
-            currentIndex: _selectedIndex,
-            type: BottomNavigationBarType.fixed,
-            selectedItemColor: Styles.colorNavGreen,
-            unselectedItemColor: Styles.colorBlack.withOpacity(0.5),
-            selectedLabelStyle:
-                TextStyle(fontWeight: FontWeight.w600, fontSize: 12),
-            unselectedLabelStyle:
-                TextStyle(fontWeight: FontWeight.w600, fontSize: 12),
-            items: [
-              BottomNavigationBarItem(
-                icon: Icon(Icons.home),
-                label: 'Home',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.work_outline,
+    return WillPopScope(
+      onWillPop: _onWillPop,
+      child: Scaffold(
+          body: IndexedStack(
+            index: _selectedIndex,
+            children: _screens,
+          ),
+          bottomNavigationBar: BottomNavigationBar(
+              backgroundColor: Colors.grey[100],
+              onTap: (index) => setState(() => _selectedIndex = index),
+              currentIndex: _selectedIndex,
+              type: BottomNavigationBarType.fixed,
+              selectedItemColor: Styles.colorNavGreen,
+              unselectedItemColor: Styles.colorBlack.withOpacity(0.5),
+              selectedLabelStyle:
+                  TextStyle(fontWeight: FontWeight.w600, fontSize: 12),
+              unselectedLabelStyle:
+                  TextStyle(fontWeight: FontWeight.w600, fontSize: 12),
+              items: [
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.home),
+                  label: 'Home',
                 ),
-                label: 'My Insurance',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.person),
-                label: 'Profile',
-              ),
-            ]));
+                BottomNavigationBarItem(
+                  icon: Icon(
+                    Icons.work_outline,
+                  ),
+                  label: 'My Insurance',
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.person),
+                  label: 'Profile',
+                ),
+              ])),
+    );
   }
 }

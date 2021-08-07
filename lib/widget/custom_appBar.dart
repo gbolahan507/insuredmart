@@ -1,19 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:insure_marts/ui/dashboard/dashboard_notification.dart';
 import 'package:insure_marts/util/spacing.dart';
 import 'package:insure_marts/util/styles.dart';
 import 'package:insure_marts/widget/custom_icon.dart';
 import 'package:insure_marts/widget/custom_text_widget.dart';
+import 'package:insure_marts/widget/export.dart';
 
 class CustomAppBar extends StatelessWidget {
   final String title;
   final bool check;
   final color, textColor;
   final Widget widget;
+  final Function onPressed;
+  final bool backbutton;
   const CustomAppBar({
     this.title,
     this.color,
     this.widget,
     this.textColor,
+    this.onPressed,
+    this.backbutton = true,
     this.check = false,
     Key key,
   }) : super(key: key);
@@ -34,9 +40,11 @@ class CustomAppBar extends StatelessWidget {
                 padding: const EdgeInsets.only(left: 20),
                 child: Row(
                   children: [
-                    CustomIcon(
-                      onPressed: () => Navigator.pop(context),
-                    ),
+                    backbutton == true
+                        ? CustomIcon(
+                            onPressed: () => Navigator.pop(context),
+                          )
+                        : SizedBox(),
                     horizontalSpaceTiny,
                     CustomText(
                       '$title',
@@ -61,7 +69,9 @@ class CustomAppBar extends StatelessWidget {
                   check
                       ? widget ??
                           CustomIcon(
-                            icon: Icons.notification_important,
+                            icon: Icons.notifications,
+                            onPressed: () =>
+                                routeTo(context, DashBoardNotification()),
                           )
                       : SizedBox()
                 ],

@@ -1,10 +1,19 @@
-import 'package:flutter/material.dart';
+import 'dart:io';
 
+import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:insure_marts/widget/export.dart';
 
+class ProfileScreen extends StatefulWidget {
+  @override
+  _ProfileScreenState createState() => _ProfileScreenState();
+}
 
+class _ProfileScreenState extends State<ProfileScreen> {
+  XFile _image;
 
-class ProfileScreen extends StatelessWidget {
+  final _picker = ImagePicker();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -13,6 +22,7 @@ class ProfileScreen extends StatelessWidget {
         child: CustomAppBar(
           title: 'Profile',
           check: true,
+          backbutton: false,
         ),
       ),
       body: Container(
@@ -23,21 +33,27 @@ class ProfileScreen extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Container(
-                  decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      border: Border.all(color: Colors.grey[200])),
-                  child: CircleAvatar(
-                    radius: 50,
-                    backgroundImage: AssetImage(
-                      'images/gbolahan2.png',
-                    ),
+                InkWell(
+                  onTap: () => takephoto(ImageSource.gallery),
+                  child: Container(
+                    height: 100,
+                    width: 100,
+                    decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        border: Border.all(color: Colors.red[200])),
+                    child: CircleAvatar(
+                        radius: 50,
+                        backgroundImage: _image != null
+                            ? FileImage(File(_image.path))
+                            : AssetImage(
+                                'images/prof.png',
+                              )),
                   ),
                 ),
               ],
             ),
             CustomText(
-              'Oluwafemi Aramide',
+              AppCache.getUser().user.fullname,
               fontSize: 14,
               color: Styles.colorBlack,
               topMargin: 15,
@@ -45,7 +61,7 @@ class ProfileScreen extends StatelessWidget {
               fontWeight: FontWeight.bold,
             ),
             CustomText(
-              'Oluwafemiaramide@gmail.com',
+              AppCache.getUser().user.email,
               fontSize: 12,
             ),
 
@@ -139,6 +155,13 @@ class ProfileScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  takephoto(ImageSource source) async {
+    final _imageFile = await _picker.pickImage(source: source);
+    setState(() {
+      _image = _imageFile;
+    });
   }
 }
 

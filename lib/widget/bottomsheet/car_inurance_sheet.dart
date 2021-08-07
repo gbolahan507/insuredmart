@@ -26,11 +26,10 @@ class CarInsuranceBottomSheet extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               CustomIcon(
-                icon: Icons.close,
-                color: Styles.colorBlack,
-                size: 25,
-                onPressed: () => Navigator.of(context),
-              ),
+                  icon: Icons.close,
+                  color: Styles.colorBlack,
+                  size: 25,
+                  onPressed: () => Navigator.of(context).pop()),
               CustomText(
                 'Car Insurance',
                 fontSize: 18,
@@ -48,6 +47,7 @@ class CarInsuranceBottomSheet extends StatelessWidget {
             fontSize: 12,
             title: 'NEw car insurance'.toUpperCase(),
             onPressed: () {
+              Navigator.of(context).pop();
               routeTo(context, CarUploadScreen1());
             },
           ),

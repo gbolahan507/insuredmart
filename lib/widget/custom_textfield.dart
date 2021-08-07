@@ -96,7 +96,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
             // maxLength: widget.maxLength,
             autofocus: widget.autoFocus,
             enabled: widget.enabled,
-            maxLines: widget.maxLines,
+            maxLines: 1 ?? widget.maxLines,
             obscureText: obscure ?? false,
             cursorColor: Colors.black,
             style: TextStyle(

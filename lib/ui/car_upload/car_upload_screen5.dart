@@ -1,12 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:insure_marts/widget/export.dart';
 
-
-
-
-
-
-
 class CarUploadScreen5 extends StatefulWidget {
   @override
   _CarUploadScreen5State createState() => _CarUploadScreen5State();
@@ -419,11 +413,12 @@ class _CarUploadScreen5State extends State<CarUploadScreen5> {
                                   ),
                                   verticalSpaceMedium,
                                   CustomButton(
-                                    height: 50,
-                                    title: 'CONTINUE',
-                                    buttonColor: Styles.colorDeepPink,
-                                    borderColor: Styles.colorDeepPink,
-                                  ),
+                                      height: 50,
+                                      title: 'CONTINUE',
+                                      buttonColor: Styles.colorDeepPink,
+                                      borderColor: Styles.colorDeepPink,
+                                      onPressed: () =>
+                                          routeTo(context, CarUploadScreen6())),
                                   verticalSpaceMedium
                                 ],
                               ),

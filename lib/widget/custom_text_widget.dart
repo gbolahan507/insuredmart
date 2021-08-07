@@ -15,13 +15,17 @@ class CustomText extends StatelessWidget {
       this.rightMargin = 0.0,
       this.bottomMargin = 0.0,
       this.letterSpacing,
+      this.maxLines,
+      this.overflow,
       this.fontFamily})
       : super(key: key);
   final String text;
   final String fontFamily;
   final double fontSize;
+  final int maxLines;
   final FontWeight fontWeight;
   final Color color;
+  final overflow;
   final double leftMargin;
   final double letterSpacing;
   final double topMargin;
@@ -38,6 +42,8 @@ class CustomText extends StatelessWidget {
       child: Text(
         text,
         textAlign: textAlign ?? TextAlign.center,
+        overflow: overflow,
+        maxLines: maxLines,
         style: TextStyle(
             height: textheight,
             letterSpacing: letterSpacing,
