@@ -13,7 +13,7 @@ class CustomSwitch extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: FlutterSwitch(
-          activeToggleColor: Styles.appBackground1,
+          activeToggleColor: Styles.colorBlue3,
           width: screenAwareSize(38, context, width: true),
           height: screenAwareSize(20, context),
           toggleSize: 20.0,

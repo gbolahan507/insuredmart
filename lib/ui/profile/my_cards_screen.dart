@@ -48,12 +48,12 @@ class _MyCardScreenState extends State<MyCardScreen> {
                 children: [
                   CustomIcon(
                     icon: Icons.add,
-                    color: Styles.appBackground1,
+                    color: Styles.colorBlue3,
                   ),
                   CustomText(
                     'Add New Card',
                     fontSize: 13,
-                    color: Styles.appBackground1,
+                    color: Styles.colorBlue3,
                     fontWeight: FontWeight.w700,
                   )
                 ],
@@ -97,7 +97,7 @@ class _MyCardScreenState extends State<MyCardScreen> {
                                               child: CustomText(
                                                 'Edit Card',
                                                 fontSize: 14,
-                                                color: Styles.appBackground1,
+                                                color: Styles.colorBlue3,
                                               )),
                                           horizontalSpaceMedium,
                                           InkWell(

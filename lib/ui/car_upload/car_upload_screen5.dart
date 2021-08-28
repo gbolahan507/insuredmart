@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:insure_marts/widget/export.dart';
 
+
+
+
 class CarUploadScreen5 extends StatefulWidget {
   @override
   _CarUploadScreen5State createState() => _CarUploadScreen5State();
@@ -67,7 +70,9 @@ class _CarUploadScreen5State extends State<CarUploadScreen5> {
                               child: Column(
                                 children: [
                                   BuildAmount(
-                                      title: 'Sum Insured', amount: '#195,800'),
+                                      title: 'Sum Insured',
+                                      fontWeight: FontWeight.w700,
+                                      amount: '#195,800'),
                                   BuildAmount(
                                       title: 'Period of insurance',
                                       amount: '12 months'),
@@ -110,9 +115,9 @@ class _CarUploadScreen5State extends State<CarUploadScreen5> {
                                   verticalSpaceSmall,
                                   BuildAmount(
                                       title: 'Total Amount',
-                                      fontSize: 20,
+                                      fontSize: 18,
                                       fontWeight: FontWeight.bold,
-                                      amountColor: Styles.colorDeepGreen,
+                                      amountColor: Styles.colorBlue1,
                                       amount: '#231,800'),
                                   verticalSpaceSmall,
                                   Container(
@@ -419,7 +424,8 @@ class _CarUploadScreen5State extends State<CarUploadScreen5> {
                                       borderColor: Styles.colorDeepPink,
                                       onPressed: () =>
                                           routeTo(context, CarUploadScreen6())),
-                                  verticalSpaceMedium
+                                  verticalSpaceMedium,
+                                  verticalSpaceSmall
                                 ],
                               ),
                             ),
@@ -448,13 +454,14 @@ class OthersPackage extends StatelessWidget {
             children: <Widget>[
               CustomText(
                 title,
-                fontSize: 10,
+                fontSize: 12,
                 fontWeight: FontWeight.bold,
                 color: Styles.colorGrey,
+                bottomMargin: 5,
               ),
               CustomText(
                 subtitle,
-                fontSize: 11,
+                fontSize: 12,
                 fontWeight: FontWeight.w600,
                 color: subTitleColor ?? Styles.colorBlack,
               ),
@@ -470,11 +477,13 @@ class Heading extends StatelessWidget {
   final String title;
   final icon;
   final Function onTap;
+  final color;
   const Heading({
     Key key,
     this.title,
     this.onTap,
     this.icon,
+    this.color,
   }) : super(key: key);
 
   @override
@@ -487,7 +496,7 @@ class Heading extends StatelessWidget {
             children: [
               CustomText(
                 '$title',
-                color: Styles.colorDeepPink,
+                color: color ?? Styles.colorDeepPink,
                 fontSize: 14,
                 fontWeight: FontWeight.bold,
               ),
@@ -545,10 +554,13 @@ class BuildAmount extends StatelessWidget {
   final titleColor, amountColor;
   final double fontSize;
   final fontWeight;
+  final titlefontWeight;
+
   const BuildAmount(
       {Key key,
       this.titleColor,
       this.fontSize,
+      this.titlefontWeight,
       this.fontWeight,
       this.amountColor,
       this.showAmount = true,
@@ -566,14 +578,15 @@ class BuildAmount extends StatelessWidget {
             CustomText(
               '$title',
               fontSize: 12,
+              fontWeight: titlefontWeight ?? FontWeight.w700,
               color: titleColor ?? Styles.colorDeepPink,
             ),
             Spacer(),
             showAmount
                 ? CustomText(
                     '$amount',
-                    fontSize: fontSize ?? 12,
-                    fontWeight: fontWeight ?? FontWeight.normal,
+                    fontSize: fontSize ?? 14,
+                    fontWeight: fontWeight ?? FontWeight.w500,
                     color: amountColor ?? Styles.colorBlack,
                   )
                 : SizedBox(),

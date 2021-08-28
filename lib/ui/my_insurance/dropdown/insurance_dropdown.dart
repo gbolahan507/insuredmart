@@ -1,57 +1,44 @@
 import 'package:flutter/material.dart';
+import 'package:insure_marts/core/models/all_dropdown_model.dart';
 import 'package:insure_marts/widget/custom_text_widget.dart';
 import 'package:insure_marts/widget/dropdownContainer.dart';
+import 'package:insure_marts/widget/export.dart';
 
-class InsuranceDropDown extends StatefulWidget {
-  const InsuranceDropDown({Key key}) : super(key: key);
-
-  @override
-  _InsuranceDropDownState createState() => _InsuranceDropDownState();
-}
-
-class _InsuranceDropDownState extends State<InsuranceDropDown> {
-  String _selectedBank;
-  List<String> _bank = [
-    'Car Insurance',
-    'UBA',
-    'Gt Bank',
-    'Union Bank',
-    'Heritage Bank',
-    'First Bank',
-    'Wema Bank',
-  ];
-
+class InsuranceDropDown extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return DropDownContainer(
-      child: DropdownButtonHideUnderline(
-        child: DropdownButton(
-          isExpanded: true,
-          hint: Padding(
-            padding: const EdgeInsets.only(left: 20),
-            child: CustomText(
-              'Select Insurance',
-            ),
-          ),
-          value:
-              _selectedBank, // A global variable used to keep track of the selection
-          items: _bank.map((item) {
-            return DropdownMenuItem(
-              value: item,
-              child: Padding(
+    return Consumer<AllDropDownModel>(builder: (_, AllDropDownModel model, __) {
+      return DropDownContainer(
+        child: DropdownButtonHideUnderline(
+          child: DropdownButton(
+              isExpanded: true,
+              hint: Padding(
                 padding: const EdgeInsets.only(left: 20),
-                child: Text(
-                  item,
-                  style: TextStyle(color: Colors.black),
+                child: CustomText(
+                  'Select Insurance',
+                  fontSize: 12,
                 ),
               ),
-            );
-          }).toList(),
-          onChanged: (selectedItem) => setState(
-            () => _selectedBank = selectedItem,
-          ),
+              value: model.insuranceSelected,
+              items: model.insurance
+                  .map<DropdownMenuItem<String>>((final String value) {
+                return DropdownMenuItem(
+                  value: value,
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 20),
+                    child: CustomText(
+                      value,
+                      color: Styles.colorBlack,
+                      fontSize: 16,
+                    ),
+                  ),
+                );
+              }).toList(),
+              onChanged: (selectedItem) {
+                model.insuranceSelected = selectedItem;
+              }),
         ),
-      ),
-    );
+      );
+    });
   }
 }

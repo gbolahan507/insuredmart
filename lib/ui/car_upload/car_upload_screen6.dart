@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:insure_marts/ui/car_upload/pages/success_payment.dart';
+import 'package:insure_marts/widget/bottomsheet/save_continue_sheet.dart';
 
 import 'package:insure_marts/widget/export.dart';
-
-
-
-
-
 
 class CarUploadScreen6 extends StatefulWidget {
   const CarUploadScreen6({Key key}) : super(key: key);
@@ -15,97 +12,97 @@ class CarUploadScreen6 extends StatefulWidget {
 }
 
 class _CarUploadScreen6State extends State<CarUploadScreen6> {
+  PageController controller = PageController(
+    initialPage: 1,
+  );
   void onRemove(CardModel card) {
     Provider.of<CardProvider>(context, listen: false).removeCard(card);
   }
 
+  List<Widget> carding = [];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(70),
-        child: CustomAppBar(
-          title: 'New Car Insurance',
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(70),
+          child: CustomAppBar(
+            title: 'New Car Insurance',
+          ),
         ),
-      ),
-      body: Container(
-        color: Styles.colorWhite,
-        child: Column(
-          children: [
-            CarUploadHeader(
-              steps: 'step 6 0f 6',
-              title: 'Payment',
-              indicatorwidth: 1.0,
-            ),
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.all(20),
+        body: Container(
+            color: Styles.colorWhite,
+            child: Column(children: [
+              CarUploadHeader(
+                steps: 'step 6 0f 6',
+                title: 'Payment',
+                indicatorwidth: 1.0,
+              ),
+              Expanded(
                 child: ListView(
                   children: [
-                    InkWell(
-                      onTap: () {
-                        showModalBottomSheet<void>(
-                            shape: const RoundedRectangleBorder(
-                              borderRadius: BorderRadius.vertical(
-                                  top: Radius.circular(20.0)),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 20, top: 10),
+                      child: InkWell(
+                        onTap: () {
+                          showModalBottomSheet<void>(
+                              shape: const RoundedRectangleBorder(
+                                borderRadius: BorderRadius.vertical(
+                                    top: Radius.circular(20.0)),
+                              ),
+                              context: context,
+                              isScrollControlled: true,
+                              builder: (_) {
+                                return AddcardSheet2();
+                              });
+                          print('add card');
+                        },
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            CustomIcon(
+                              icon: Icons.add,
+                              color: Styles.colorBlue2,
                             ),
-                            context: context,
-                            isScrollControlled: true,
-                            builder: (_) {
-                              return AddcardSheet2();
-                            });
-                        print('add card');
-                      },
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          CustomIcon(
-                            icon: Icons.add,
-                            color: Styles.colorLightBlue,
-                          ),
-                          CustomText(
-                            'Add New Card',
-                            fontSize: 13,
-                            color: Styles.colorLightBlue,
-                            fontWeight: FontWeight.w700,
-                          )
-                        ],
+                            CustomText(
+                              'Add New Card',
+                              fontSize: 13,
+                              color: Styles.colorBlue2,
+                              fontWeight: FontWeight.w700,
+                            )
+                          ],
+                        ),
                       ),
                     ),
                     verticalSpaceMedium,
+                    verticalSpaceMedium,
 
                     Provider.of<CardProvider>(context).getCardLength() > 0
-                        ? Consumer<CardProvider>(
-                            builder: (_, choose, child) => Container(
-                              child: Container(
-                                margin: EdgeInsets.only(right: 20),
+                        ? Consumer<CardProvider>(builder: (_, choose, child) {
+                            for (var index = 0;
+                                index < choose.cards.length;
+                                index++) {
+                              var cardview = Container(
+                                child: CreditCardWidget(
+                                  cardType: CardType.mastercard,
+                                  cardNumber: choose.cards[index].cardNumber,
+                                  expiryDate: choose.cards[index].exp,
+                                  cardHolderName:
+                                      choose.cards[index].cardHolderName,
+                                  cvvCode: choose.cards[index].cvv,
+                                  showBackView: false,
+                                ),
+                              );
+                              carding.add(cardview);
+                            }
+                            return Container(
                                 height: 220,
-                                child: ListView.builder(
-                                    itemCount: choose.cards.length,
-                                    scrollDirection: Axis.horizontal,
-                                    shrinkWrap: true,
-                                    itemBuilder: (context, index) {
-                                      return CreditCardWidget(
-                                        cardNumber:
-                                            choose.cards[index].cardNumber,
-                                        // exp: choose.cards[index].exp,
-                                        // margin: EdgeInsets.only(left: 20),
-                                        expiryDate: choose.cards[index].exp,
-                                        cardHolderName:
-                                            choose.cards[index].cardHolderName,
-                                        cvvCode: choose.cards[index].cvv,
-                                        showBackView: false,
-                                      );
-                                      //   MyCard(
-                                      //   cardHolderName: choose.cards[index].cardHolderName,
-                                      //   c
-                                      //   id: DateTime.now().toString(),
-                                      //   exp: choose.cards[index].exp,
-                                      // );
-                                    }),
-                              ),
-                            ),
-                          )
+                                child: PageView(
+                                  controller: controller,
+                                  scrollDirection: Axis.horizontal,
+                                  children: carding,
+                                ));
+                          })
                         : Container(
                             padding: EdgeInsets.symmetric(horizontal: 20),
                             child: EmptyCard(
@@ -114,7 +111,6 @@ class _CarUploadScreen6State extends State<CarUploadScreen6> {
                                   horizontal: 20, vertical: 20),
                               width: double.infinity,
                             )),
-                    // verticalSpaceLarge,
                     //
                     Divider(
                       color: Colors.grey,
@@ -178,12 +174,12 @@ class _CarUploadScreen6State extends State<CarUploadScreen6> {
                                 'Summary',
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
-                                color: Styles.colorDeepGreen,
+                                color: Styles.colorGreen1,
                               ),
                               CustomText(
                                 '#181,700',
                                 fontSize: 16,
-                                color: Styles.colorDeepGreen,
+                                color: Styles.colorGreen1,
                                 fontWeight: FontWeight.bold,
                               ),
                             ],
@@ -196,20 +192,20 @@ class _CarUploadScreen6State extends State<CarUploadScreen6> {
                             title: 'PAY',
                             fontSize: 12,
                             height: 50,
-                            buttonColor: Styles.appBackground1,
+                            buttonColor: Styles.colorBlue3,
                             onPressed: () {
-                              // Navigator.push(context, MaterialPageRoute(builder: (context) => CarUploadScreen5()));
+                              routeTo(context, SuccessPaymennt());
                             },
                           ),
-                          verticalSpaceSmall,
+                          verticalSpaceMedium,
                           CustomButton(
                             title: 'SAVE & CONTINUE LATER',
                             fontSize: 12,
                             height: 50,
-                            textColor: Styles.appBackground1,
+                            textColor: Styles.colorBlue3,
                             buttonColor: Styles.colorWhite,
                             onPressed: () {
-                              // Navigator.push(context, MaterialPageRoute(builder: (context) => CarUploadScreen2()));
+                              save();
                             },
                           ),
                           verticalSpaceMedium,
@@ -219,11 +215,13 @@ class _CarUploadScreen6State extends State<CarUploadScreen6> {
                     ),
                   ],
                 ),
-              ),
-            )
-          ],
-        ),
-      ),
-    );
+              )
+            ])));
   }
+
+  void save() => showModalBottomSheet(
+      context: context,
+      builder: (context) {
+        return SaveBottomSheet();
+      });
 }

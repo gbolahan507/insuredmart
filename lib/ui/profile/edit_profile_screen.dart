@@ -54,7 +54,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                     fontSize: 10,
                     height: 35,
                     width: 150,
-                    buttonColor: Styles.appBackground1,
+                    buttonColor: Styles.colorBlue3,
                     onPressed: () => takephoto(ImageSource.gallery),
                   )
                 ],

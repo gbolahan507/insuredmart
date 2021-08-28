@@ -1,13 +1,11 @@
-import 'package:credit_card/credit_card_form.dart';
-import 'package:credit_card/credit_card_model.dart';
 import 'package:flutter/material.dart';
 import 'package:insure_marts/core/models/card_model.dart';
 import 'package:insure_marts/core/provider/card_provider.dart';
 import 'package:insure_marts/util/spacing.dart';
+import 'package:insure_marts/util/styles.dart';
 import 'package:insure_marts/widget/custom_button.dart';
 import 'package:provider/provider.dart';
-
-
+import 'package:flutter_credit_card/flutter_credit_card.dart';
 
 class AddcardSheet2 extends StatefulWidget {
   @override
@@ -15,16 +13,15 @@ class AddcardSheet2 extends StatefulWidget {
 }
 
 class _AddcardSheet2State extends State<AddcardSheet2> {
-
-    String cardNumber = '';
+  String cardNumber = '';
   String expiryDate = '';
   String cardHolderName = '';
   String cvvCode = '';
   bool isCvvFocused = false;
+  final _formKey = new GlobalKey<FormState>();
 
-
-    void onadd(){
-        CardModel card = CardModel(
+  void onadd() {
+    CardModel card = CardModel(
       cardHolderName: cardHolderName,
       cardNumber: cardNumber,
       exp: expiryDate,
@@ -43,30 +40,60 @@ class _AddcardSheet2State extends State<AddcardSheet2> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-          child: Container(
-        child:  Column(
+      child: Container(
+        child: Column(
           children: [
+            CreditCardWidget(
+                cardNumber: cardNumber,
+                expiryDate: expiryDate,
+                cardHolderName: cardHolderName,
+                cvvCode: cvvCode,
+                obscureCardNumber: true,
+                obscureCardCvv: true,
+                showBackView: isCvvFocused),
             CreditCardForm(
-                     onCreditCardModelChange: onCreditCardModelChange,
-                      // cardNumberValidator: (val) =>,
-                      
-                    ),
-
-                      verticalSpaceMedium,
-                Container(
-                  padding: EdgeInsets.all(20),
-                  child: CustomButton(
-                    title: 'Check',
-                    onPressed: (){
-                      onadd();
-                    },
-                  ),
-                )
+              expiryDate: expiryDate,
+              cardHolderName: cardHolderName,
+              cvvCode: cvvCode,
+              cardNumber: cardNumber,
+              themeColor: Styles.colorNavGreen,
+              formKey: _formKey,
+              onCreditCardModelChange: onCreditCardModelChange,
+              cardNumberDecoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'Number',
+                  hintText: 'xxxx xxxx xxxx xxxx'),
+              expiryDateDecoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'Expiry Date',
+                  hintText: 'xx/xx'),
+              cvvCodeDecoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'CVV',
+                  hintText: 'xxx'),
+              cardHolderDecoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'Card Holder Name',
+                  hintText: 'Aramide'),
+            ),
+            verticalSpaceMedium,
+            Container(
+              padding: EdgeInsets.all(20),
+              child: CustomButton(
+                title: 'Check',
+                onPressed: () {
+                  if (_formKey.currentState.validate()) {
+                    onadd();
+                  }
+                },
+              ),
+            )
           ],
         ),
       ),
     );
   }
+
   void onCreditCardModelChange(CreditCardModel creditCardModel) {
     setState(() {
       cardNumber = creditCardModel.cardNumber;

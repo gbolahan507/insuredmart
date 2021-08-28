@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:insure_marts/widget/bottomsheet/save_continue_sheet.dart';
 import 'package:insure_marts/widget/export.dart';
 
 class CarUploadScreen1 extends StatelessWidget {
   final _formKey = new GlobalKey<FormState>();
 
   final _fullNameController = TextEditingController();
-  final _carBrandController = TextEditingController();
+  final _carMakerController = TextEditingController();
   final _carModelController = TextEditingController();
-  final _monthYearController = TextEditingController();
   final _registerNumberController = TextEditingController();
   final _cvvNumberController = TextEditingController();
   final _expiryNumberController = TextEditingController();
@@ -39,7 +39,7 @@ class CarUploadScreen1 extends StatelessWidget {
                         builder: (context) => CarUploadScreen2()));
               },
             ),
-            verticalSpaceMedium,
+            verticalSpaceSmall,
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -52,15 +52,15 @@ class CarUploadScreen1 extends StatelessWidget {
                         controller: _fullNameController,
                         hintText: 'Enter Name',
                         validator: (val) =>
-                            val.isEmpty ? 'Enter fullName' : null,
+                            val.isEmpty ? 'Enter User fullName' : null,
                       ),
                       verticalSpaceMedium30,
                       CustomTextField(
-                        title: 'Car Brand',
-                        controller: _carBrandController,
+                        title: 'Car Maker',
+                        controller: _carMakerController,
                         hintText: 'e.g Toyota',
                         validator: (val) =>
-                            val.isEmpty ? 'Enter car brand' : null,
+                            val.isEmpty ? 'Enter car Maker Name' : null,
                       ),
                       verticalSpaceMedium30,
                       CustomTextField(
@@ -68,13 +68,13 @@ class CarUploadScreen1 extends StatelessWidget {
                         controller: _carModelController,
                         hintText: 'e.g Camry',
                         validator: (val) =>
-                            val.isEmpty ? 'Enter car model' : null,
+                            val.isEmpty ? 'Enter car model Name' : null,
                       ),
                       verticalSpaceMedium30,
                       CustomTextField(
-                        title: 'Car Color',
+                        title: 'Color of vehicle',
                         controller: _carColorController,
-                        hintText: 'e.g Red',
+                        hintText: 'Red',
                         validator: (val) =>
                             val.isEmpty ? 'Enter car color' : null,
                       ),
@@ -82,41 +82,34 @@ class CarUploadScreen1 extends StatelessWidget {
                       CustomTextField(
                         title: 'Value of Car',
                         controller: _carValueColorController,
-                        hintText: 'e.g Red',
+                        hintText: '1000000000 and above',
                         validator: (val) =>
                             val.isEmpty ? 'Enter car value' : null,
                       ),
                       verticalSpaceMedium30,
                       CustomTextField(
-                        title: 'Manufacture Year',
-                        controller: _monthYearController,
-                        hintText: 'e.g 2014',
-                        validator: (val) =>
-                            val.isEmpty ? 'Enter car brand' : null,
-                      ),
-                      verticalSpaceMedium30,
-                      CustomTextField(
                         title: 'Registration Number',
                         controller: _registerNumberController,
-                        hintText: '10-digit number',
-                        validator: (val) =>
-                            val.isEmpty ? 'Enter car brand' : null,
+                        hintText: 'eg 354ADF56',
+                        validator: (val) => val.isEmpty
+                            ? 'Enter car registration number'
+                            : null,
                       ),
                       verticalSpaceMedium30,
                       CustomTextField(
                         title: 'Chasis Number',
                         controller: _cvvNumberController,
-                        hintText: '10-digit number',
+                        hintText: 'Chasis Number',
                         validator: (val) =>
-                            val.isEmpty ? 'Enter car brand' : null,
+                            val.isEmpty ? 'Enter car chasis number' : null,
                       ),
                       verticalSpaceMedium30,
                       CustomTextField(
                         title: 'Engine Number',
                         controller: _expiryNumberController,
-                        hintText: '10-digit number',
+                        hintText: 'Engine Number',
                         validator: (val) =>
-                            val.isEmpty ? 'Enter car brand' : null,
+                            val.isEmpty ? 'Enter car Engine Number' : null,
                       ),
                       verticalSpaceMedium30,
                       CustomTextField(
@@ -124,30 +117,28 @@ class CarUploadScreen1 extends StatelessWidget {
                         controller: _periodController,
                         hintText: '1 year',
                         validator: (val) =>
-                            val.isEmpty ? 'Enter insurance' : null,
+                            val.isEmpty ? 'Enter insurance Period' : null,
                       ),
                       verticalSpaceMedium30,
                       CustomButton(
                         title: 'CONTINUE',
-                        fontSize: 12,
                         height: 50,
-                        buttonColor: Styles.appBackground1,
+                        buttonColor: Styles.colorBlue3,
                         onPressed: () {
                           // if (_formKey.currentState.validate()) {
-
                           routeTo(context, CarUploadScreen2());
                           // }
                         },
                       ),
-                      verticalSpaceSmall,
+                      verticalSpaceMedium,
                       CustomButton(
                         title: 'SAVE & CONTINUE LATER',
                         fontSize: 12,
                         height: 50,
-                        textColor: Styles.appBackground1,
+                        textColor: Styles.colorBlue3,
                         buttonColor: Styles.colorWhite,
                         onPressed: () {
-                          routeTo(context, CarUploadScreen2());
+                          save(context);
                         },
                       ),
                       verticalSpaceMedium,
@@ -162,4 +153,10 @@ class CarUploadScreen1 extends StatelessWidget {
       ),
     );
   }
+
+  void save(BuildContext context) => showModalBottomSheet(
+      context: context,
+      builder: (context) {
+        return SaveBottomSheet();
+      });
 }

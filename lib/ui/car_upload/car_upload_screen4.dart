@@ -1,211 +1,173 @@
 import 'package:flutter/material.dart';
+import 'package:insure_marts/core/models/homepage_model.dart';
+import 'package:insure_marts/core/storage/local_storage.dart';
+import 'package:insure_marts/core/view_model/others_vm.dart';
+import 'package:insure_marts/util/constant/base_view.dart';
+import 'package:insure_marts/widget/bottomsheet/save_continue_sheet.dart';
 import 'package:insure_marts/widget/export.dart';
 
+class CarUploadScreen4 extends StatefulWidget {
+  @override
+  _CarUploadScreen4State createState() => _CarUploadScreen4State();
+}
 
-
-class CarUploadScreen4 extends StatelessWidget {
+class _CarUploadScreen4State extends State<CarUploadScreen4> {
   @override
   Widget build(BuildContext context) {
-    Provider.of<ToggleData>(context, listen: false).initialdata();
-
-    return Scaffold(
-        appBar: PreferredSize(
-          preferredSize: Size.fromHeight(70),
-          child: CustomAppBar(
-            title: 'New Car Insurance',
-          ),
-        ),
-        body: Consumer<ToggleData>(
-          builder: (_, choose, child) => Container(
-            child: Container(
+    // Logger().d(AppCache.getInsuranceType());\
+    return BaseView<OthersViewModel>(
+        onModelReady: (OthersViewModel model) => model.getExtension(),
+        builder: (_, OthersViewModel model, child) {
+          return Scaffold(
+            appBar: PreferredSize(
+              preferredSize: Size.fromHeight(70),
+              child: CustomAppBar(
+                title: 'New Car Insurance',
+              ),
+            ),
+            body: Container(
               color: Styles.colorWhite,
-              child: Column(children: [
-                CarUploadHeader(
-                  steps: 'step 4 0f 5',
-                  title: 'Choose Insurance',
-                  indicatorwidth: 0.80,
-                  forwardOntap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => CarUploadScreen5()));
-                  },
-                ),
-                Expanded(
-                  child: ListView(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 20),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            InkWell(
-                              onTap: () {
-                                showModalBottomSheet<void>(
-                                    shape: const RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.vertical(
-                                          top: Radius.circular(20.0)),
-                                    ),
-                                    context: context,
-                                    isScrollControlled: true,
-                                    builder: (_) {
-                                      return const SetupProfileSheet();
-                                    });
-                              },
-                              child: Row(
-                                children: [
-                                  Image.asset(
-                                    'images/sort.png',
-                                    width: 15,
-                                  ),
-                                  horizontalSpaceTiny,
-                                  CustomText(
-                                    'Sort',
-                                    fontSize: 14,
-                                    color: Styles.colorGrey,
-                                  ),
-                                ],
+              child: ListView(
+                children: [
+                  CarUploadHeader(
+                    steps: 'step 4 0f 5',
+                    title: 'Choose Extensions',
+                    indicatorwidth: 0.60,
+                    forwardOntap: () {},
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 20, top: 10),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        InkWell(
+                          onTap: () {
+                            showModalBottomSheet<void>(
+                                shape: const RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.vertical(
+                                      top: Radius.circular(20.0)),
+                                ),
+                                context: context,
+                                isScrollControlled: true,
+                                builder: (_) {
+                                  return const SetupProfileSheet();
+                                });
+                          },
+                          child: Row(
+                            children: [
+                              Image.asset(
+                                'images/sort.png',
+                                width: 15,
                               ),
-                            ),
-                            horizontalSpaceMedium,
-                            InkWell(
-                              onTap: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => FilterScreen()));
-                              },
-                              child: Row(
-                                children: [
-                                  Image.asset(
-                                    'images/filter.png',
-                                    width: 15,
-                                  ),
-                                  horizontalSpaceTiny,
-                                  CustomText(
-                                    'Filter',
-                                    fontSize: 14,
-                                    color: Styles.colorGrey,
-                                  ),
-                                ],
+                              horizontalSpaceTiny,
+                              CustomText(
+                                'Sort',
+                                fontSize: 14,
+                                color: Styles.colorGrey,
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
-                      ),
-                      verticalSpaceMedium,
-                      InsuranceContainer(
-                        borderColor: choose.custodianAlliedInsuance
-                            ? Styles.colorLightgreen
-                            : Styles.colorBoxBorder,
-                        backroundColor: choose.custodianAlliedInsuance
-                            ? Styles.colorLightLemon
-                            : Styles.colorBoxBackground,
-                        title: 'Custodian & Allied Insurance',
-                        coverNumber: '2',
-                        policyYear: '1',
-                        price: '1000',
-                        image: 'images/Bitmap.png',
-                        onTap: () {
-                          choose.toggleCustodianAlliedInsurance();
-                          print('hello');
-                        },
-                      ),
-                      verticalSpaceMedium,
-                      InsuranceContainer(
-                        borderColor: choose.leadwayInsurance
-                            ? Styles.colorLightgreen
-                            : Styles.colorBoxBorder,
-                        backroundColor: choose.leadwayInsurance
-                            ? Styles.colorLightLemon
-                            : Styles.colorBoxBackground,
-                        title: 'Leadway Assurance Plc',
-                        coverNumber: '2',
-                        policyYear: '1',
-                        price: '1000',
-                        image: 'images/Bitmap2.png',
-                        onTap: () {
-                          choose.toggleLeadwayInsurance();
-                          print('hello');
-                        },
-                      ),
-                      verticalSpaceMedium,
-                      InsuranceContainer(
-                        borderColor: choose.allianceInsurance
-                            ? Styles.colorLightgreen
-                            : Styles.colorBoxBorder,
-                        backroundColor: choose.allianceInsurance
-                            ? Styles.colorLightLemon
-                            : Styles.colorBoxBackground,
-                        title: 'Alliance Nigeria Insurance Plc',
-                        coverNumber: '2',
-                        policyYear: '1',
-                        price: '1000',
-                        image: 'images/Bitmap5.png',
-                        onTap: () {
-                          choose.toggleAllianceInsurance();
-                          print('hello');
-                        },
-                      ),
-                      verticalSpaceMedium,
-                      InsuranceContainer(
-                        borderColor: choose.maniardInsurance
-                            ? Styles.colorLightgreen
-                            : Styles.colorBoxBorder,
-                        backroundColor: choose.maniardInsurance
-                            ? Styles.colorLightLemon
-                            : Styles.colorBoxBackground,
-                        title: 'Maniard Insurance Plc',
-                        coverNumber: '2',
-                        policyYear: '1',
-                        price: '1000',
-                        image: 'images/Bitmap4.png',
-                        onTap: () {
-                          choose.togglemaniardInsurance();
-                          print('hello');
-                        },
-                      ),
-                      verticalSpaceMedium,
-                      verticalSpaceTiny,
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 20),
-                        child: CustomButton(
+                        horizontalSpaceMedium,
+                        InkWell(
+                          onTap: () {
+                            routeTo(context, FilterPage());
+                          },
+                          child: Row(
+                            children: [
+                              Image.asset(
+                                'images/filter.png',
+                                width: 15,
+                              ),
+                              horizontalSpaceTiny,
+                              CustomText(
+                                'Filter',
+                                fontSize: 14,
+                                color: Styles.colorGrey,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  verticalSpaceMedium,
+                  ListView.builder(
+                      itemCount: insuranceTypeModel.length,
+                      shrinkWrap: true,
+                      physics: NeverScrollableScrollPhysics(),
+                      itemBuilder: (context, index) {
+                        final InsuranceTypeModel insurance =
+                            insuranceTypeModel[index];
+                        bool isSelected = AppCache.getInsuranceType()
+                            .contains(insurance.title);
+                        print(insuranceTypeModel.length);
+                        return Padding(
+                          padding: const EdgeInsets.only(
+                            bottom: 20,
+                          ),
+                          child: InsuranceContainer(
+                            borderColor: isSelected
+                                ? Styles.colorLightgreen
+                                : Styles.colorBoxBorder,
+                            backroundColor: isSelected
+                                ? Styles.colorLightLemon
+                                : Styles.colorBoxBackground,
+                            stackBoxColor: isSelected
+                                ? Styles.colorBlue3
+                                : Colors.transparent,
+                            stackIconColor: isSelected
+                                ? Styles.colorWhite
+                                : Colors.transparent,
+                            title: insurance.title,
+                            image: insurance.image,
+                            onTap: () {
+                              AppCache.saveInsuranceType(insurance.title);
+                              setState(() {});
+                            },
+                          ),
+                        );
+                      }),
+                  verticalSpaceMedium,
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: Column(
+                      children: [
+                        CustomButton(
                           title: 'CONTINUE',
                           fontSize: 12,
                           height: 50,
-                          buttonColor: Styles.appBackground1,
+                          buttonColor: Styles.colorBlue3,
                           onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => CarUploadScreen5()));
+                            routeTo(context, CarUploadScreen5());
                           },
                         ),
-                      ),
-                      verticalSpaceSmall,
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 20),
-                        child: CustomButton(
+                        verticalSpaceMedium,
+                        CustomButton(
                           title: 'SAVE & CONTINUE LATER',
                           fontSize: 12,
                           height: 50,
-                          textColor: Styles.appBackground1,
+                          textColor: Styles.colorBlue3,
                           buttonColor: Styles.colorWhite,
                           onPressed: () {
-                            print(choose.twoStepVerification);
-                            print('hello');
-                            // Navigator.push(context, MaterialPageRoute(builder: (context) => CarUploadScreen2()));
+                            save();
                           },
                         ),
-                      ),
-                      verticalSpaceMedium,
-                      verticalSpaceSmall,
-                    ],
+                        verticalSpaceMedium,
+                        verticalSpaceSmall
+                      ],
+                    ),
                   ),
-                ),
-              ]),
+                ],
+              ),
             ),
-          ),
-        ));
+          );
+        });
   }
+
+  void save() => showModalBottomSheet(
+      context: context,
+      builder: (context) {
+        return SaveBottomSheet();
+      });
 }

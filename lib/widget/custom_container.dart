@@ -40,7 +40,6 @@ class CustomContainer extends StatelessWidget {
       child: Container(
         margin: margin,
         height: height,
-        // screenAwareSize(65, context),
         width: width ?? double.infinity,
         padding: padding ?? EdgeInsets.symmetric(horizontal: 20, vertical: 20),
         decoration: BoxDecoration(
@@ -69,7 +68,7 @@ class CustomContainer extends StatelessWidget {
                     height: screenAwareSize(25, context),
                     width: screenAwareSize(25, context, width: true),
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5),
+                      borderRadius:  BorderRadius.circular(5),
                       color: checkboxColor,
                     ),
                     child: CustomIcon(

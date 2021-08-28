@@ -14,13 +14,13 @@ class ShareScreen extends StatelessWidget {
           preferredSize: Size.fromHeight(70),
           child: CustomAppBar(
             title: 'Share Instrument',
-            color: Styles.appBackground1,
+            color: Styles.colorBlue3,
             textColor: Styles.colorWhite,
           ),
         ),
         body: Container(
           padding: EdgeInsets.symmetric(horizontal: 20),
-          color: Styles.appBackground1,
+          color: Styles.colorBlue3,
           child: ListView(
             children: [
               verticalSpaceMedium,
@@ -93,7 +93,7 @@ class ShareScreen extends StatelessWidget {
           ),
         ),
         bottomNavigationBar: Container(
-          color: Styles.appBackground1,
+          color: Styles.colorBlue3,
           child: Image.asset(
             'images/friends.png',
             height: screenAwareSize(189, context),

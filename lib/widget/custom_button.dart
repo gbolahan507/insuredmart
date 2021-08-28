@@ -17,7 +17,7 @@ class CustomButton extends StatefulWidget {
       this.busy = false,
       this.newWidget,
       this.textColor = Colors.white,
-      this.buttonColor = const Color(0xff03588C),
+      this.buttonColor = const Color(0xff213267),
       this.title,
       this.fontSize})
       : super(key: key);
@@ -47,21 +47,19 @@ class _CustomButtonState extends State<CustomButton> {
         width: widget.width,
         decoration: BoxDecoration(
             boxShadow: const <BoxShadow>[
-              BoxShadow(
-                blurRadius: 5.0,
-                color: Color(0x20000000),
-                spreadRadius: 0.0,
-                offset: Offset(3.5, 5.0),
-              ),
+              // BoxShadow(
+              //   blurRadius: 5.0,
+              //   color: Color(0x20000000),
+              //   spreadRadius: 0.0,
+              //   offset: Offset(3.5, 5.0),
+              // ),
             ],
-            color: widget.busy
-                ? widget.buttonColor.withOpacity(0.2)
-                : widget.buttonColor,
+            color: widget.busy ? widget.buttonColor : widget.buttonColor,
             borderRadius: BorderRadius.circular(8),
             border: Border.all(
                 color: widget.busy
-                    ? widget.buttonColor.withOpacity(0.2)
-                    : widget.borderColor ?? Styles.appBackground1,
+                    ? widget.buttonColor
+                    : widget.borderColor ?? Styles.colorBlue2,
                 width: 2)),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -87,7 +85,7 @@ class _CustomButtonState extends State<CustomButton> {
                                 screenAwareSize(widget.fontSize ?? 12, context,
                                     width: true),
                                 context),
-                            fontWeight: FontWeight.w700),
+                            fontWeight: FontWeight.w800),
                       ],
                     )
             else
@@ -102,7 +100,7 @@ class _CustomButtonState extends State<CustomButton> {
                           screenAwareSize(widget.fontSize ?? 12, context,
                               width: true),
                           context),
-                      fontWeight: FontWeight.w700),
+                      fontWeight: FontWeight.w800),
                 ],
               ),
           ],

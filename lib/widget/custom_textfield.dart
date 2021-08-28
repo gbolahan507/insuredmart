@@ -19,11 +19,14 @@ class CustomTextField extends StatefulWidget {
       this.suffixIcon,
       this.validator,
       this.onChanged,
+      this.errorText,
       this.hintText,
       this.fillColor,
       this.titleColor,
+      this.titleFontWeight,
       this.title,
       this.bottomMarging,
+      this.titleFontSize,
       this.obscure})
       : super(key: key);
   final TextEditingController controller;
@@ -31,15 +34,17 @@ class CustomTextField extends StatefulWidget {
   final TextInputAction inputAction;
   final FocusNode focusNode;
   final int maxLength;
+  final titleFontSize;
   final bottomMarging;
   final int maxLines;
   final bool enabled;
   final bool obscure;
   final Color titleColor, fillColor;
-
+  final titleFontWeight;
   final bool autoFocus;
   final String labelText, title;
   final String hintText;
+  final String errorText;
   final Widget suffixIcon;
   final String Function(String) validator;
   final Function(String) onChanged;
@@ -65,8 +70,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
           children: [
             CustomText(
               widget.title,
-              fontWeight: FontWeight.bold,
-              fontSize: 14,
+              fontWeight: widget.titleFontWeight ?? FontWeight.w600,
+              fontSize: widget.titleFontSize ?? 14,
               color: widget.titleColor ?? Styles.colorBlack.withOpacity(0.8),
             ),
           ],
@@ -92,11 +97,12 @@ class _CustomTextFieldState extends State<CustomTextField> {
             keyboardType: widget.inputType,
             controller: widget.controller,
             textInputAction: widget.inputAction,
+
             //  widget.inputAction,
             // maxLength: widget.maxLength,
             autofocus: widget.autoFocus,
             enabled: widget.enabled,
-            maxLines: 1 ?? widget.maxLines,
+            maxLines: widget.maxLines ?? 1,
             obscureText: obscure ?? false,
             cursorColor: Colors.black,
             style: TextStyle(
@@ -105,6 +111,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                 fontFamily: 'Brandon'),
             onChanged: widget.onChanged,
             decoration: InputDecoration(
+              errorText: widget.errorText,
               contentPadding:
                   const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
               labelText: widget.labelText,
@@ -119,7 +126,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
                   color: Styles.colorGrey,
                   fontSize: screenAwareSize(14, context, width: true),
                   fontFamily: 'Brandon'),
-              errorStyle: const TextStyle(color: Color(0xff222222)),
+              errorStyle: const TextStyle(
+                  color: Colors.red, fontSize: 13, fontWeight: FontWeight.bold),
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(8),
                 borderSide: BorderSide(color: Styles.colorLightgreen, width: 2),

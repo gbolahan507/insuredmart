@@ -29,14 +29,14 @@ class _SplashScreenState extends State<SplashScreen> {
             gradient: LinearGradient(
       begin: Alignment.topCenter,
       end: Alignment.bottomCenter,
-      colors: [Styles.appBackground1, Styles.appBackground2])
+      colors: [Styles.colorBlue3, Styles.appBackground2])
   ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
                Image.asset(
-                      'images/logo.png',
-                      width: screenAwareSize(93, context, width: true),
+                      'images/logo3.png',
+                      width: screenAwareSize(150, context, width: true),
                        
                     ),
             ],

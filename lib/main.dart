@@ -10,6 +10,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'core/storage/local_storage.dart';
 import 'locator.dart';
 
+
+
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();

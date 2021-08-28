@@ -10,13 +10,13 @@ class CustomAppBar extends StatelessWidget {
   final String title;
   final bool check;
   final color, textColor;
-  final Widget widget;
+  final Widget actions;
   final Function onPressed;
   final bool backbutton;
   const CustomAppBar({
     this.title,
     this.color,
-    this.widget,
+    this.actions,
     this.textColor,
     this.onPressed,
     this.backbutton = true,
@@ -67,7 +67,7 @@ class CustomAppBar extends StatelessWidget {
                     height: 30,
                   ),
                   check
-                      ? widget ??
+                      ? actions ??
                           CustomIcon(
                             icon: Icons.notifications,
                             onPressed: () =>

@@ -38,7 +38,7 @@ class CarUploadHeader extends StatelessWidget {
                       topRight: Radius.circular(8.5),
                       bottomRight: Radius.circular(8.5),
                     ),
-                    color: indicatorcolor ?? Styles.colorLightBlue,
+                    color: indicatorcolor ?? Styles.colorBlue1,
                   ),
                   height: screenAwareSize(12, context),
                   width: screenWidth(context) * indicatorwidth),
@@ -68,7 +68,7 @@ class CarUploadHeader extends StatelessWidget {
               ),
               Spacer(),
               DotCircle(
-                dotColor: rightDotcolor ?? Styles.appBackground1,
+                dotColor: rightDotcolor ?? Styles.colorBlue3,
                 onTap: () {
                   // Navigator.pop(context);
                 },
@@ -79,7 +79,7 @@ class CarUploadHeader extends StatelessWidget {
                 onTap: () {},
                 // forwardOntap,
                 icon: Icons.arrow_forward_ios,
-                dotColor: leftDotColor ?? Styles.appBackground1,
+                dotColor: leftDotColor ?? Styles.colorBlue3,
                 // padding: EdgeInsets.only(right:4),
               ),
             ],

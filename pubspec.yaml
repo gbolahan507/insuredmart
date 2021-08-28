@@ -34,7 +34,6 @@ dependencies:
   flutter_switch: ^0.3.1
   shared_preferences: ^2.0.5
   flutter_credit_card: ^2.0.0
-  credit_card: ^0.1.8
   dio: ^4.0.0
   hive:
   hive_flutter:
@@ -48,8 +47,10 @@ dependencies:
   intl: any
   flutter_settings_screens: ^0.2.2+1
   image_picker: ^0.8.0+3
-  video_player: ^2.1.12
   path_provider: ^2.0.2
+  getwidget: ^2.0.3
+  path: ^1.8.0
+  flutter_datetime_picker:
 
 
 

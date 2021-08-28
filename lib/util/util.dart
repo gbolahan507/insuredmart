@@ -30,6 +30,8 @@ abstract class Utils {
     }
   }
 
+
+
   static validateConfirmPassword(val, password) {
     if (val.isEmpty) {
       return 'Password cannot be empty!';
@@ -40,13 +42,6 @@ abstract class Utils {
     }
   }
 
-  // validator: (val){
-  //                             if(val.isEmpty)
-  //                                  return 'Empty';
-  //                             if(val != _pass.text)
-  //                                  return 'Not Match'
-  //                             return null;
-  //                             }
 
   static isValidCard(val) {
     if (val.isEmpty) {

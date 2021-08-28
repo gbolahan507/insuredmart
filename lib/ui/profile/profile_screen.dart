@@ -1,8 +1,12 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:insure_marts/widget/export.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:path/path.dart';
+
 
 class ProfileScreen extends StatefulWidget {
   @override
@@ -11,7 +15,6 @@ class ProfileScreen extends StatefulWidget {
 
 class _ProfileScreenState extends State<ProfileScreen> {
   XFile _image;
-
   final _picker = ImagePicker();
 
   @override
@@ -34,22 +37,21 @@ class _ProfileScreenState extends State<ProfileScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 InkWell(
-                  onTap: () => takephoto(ImageSource.gallery),
-                  child: Container(
-                    height: 100,
-                    width: 100,
-                    decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        border: Border.all(color: Colors.red[200])),
-                    child: CircleAvatar(
-                        radius: 50,
-                        backgroundImage: _image != null
-                            ? FileImage(File(_image.path))
-                            : AssetImage(
-                                'images/prof.png',
-                              )),
-                  ),
-                ),
+                  onTap: () => takephoto2(ImageSource.gallery),
+                  child: ClipOval(
+                      child: _image != null
+                          ? Image.file(
+                              File(_image.path),
+                              width: 100,
+                              height: 100,
+                              fit: BoxFit.cover,
+                            )
+                          : Image.asset(
+                              'images/prof.png',
+                              width: 100,
+                              height: 100,
+                            )),
+                )
               ],
             ),
             CustomText(
@@ -64,14 +66,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
               AppCache.getUser().user.email,
               fontSize: 12,
             ),
-
             verticalSpaceMedium,
-
             Divider(
               color: Colors.grey,
             ),
             verticalSpaceMedium,
-
             CustomRowTile(
                 leadingIcon: Icons.edit,
                 title: 'Edit Profile',
@@ -138,7 +137,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => AboutUs()));
                 }),
-
             CustomRowTile(
                 checkImage: true,
                 image: 'images/logout.png',
@@ -147,21 +145,30 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   AppCache.clear();
                   routeToReplace(context, SignupScreen());
                 }),
-            // Row(
-
-            //
-            // )
           ],
         ),
       ),
     );
   }
 
-  takephoto(ImageSource source) async {
-    final _imageFile = await _picker.pickImage(source: source);
-    setState(() {
-      _image = _imageFile;
-    });
+  Future takephoto2(ImageSource source) async {
+    try {
+      final _image = await _picker.pickImage(source: source);
+      if (_image == null) return;
+      setState(() {
+        this._image = _image;
+      });
+    } on PlatformException catch (e) {
+      print(e.message);
+    }
+  }
+
+  Future<File> saveImagePermanent(String imagePath) async {
+    final directory = await getApplicationDocumentsDirectory();
+    final name = basename(imagePath);
+    final image = File("${directory.path}/$name");
+    final boy = File(imagePath).copy(image.path);
+    return boy;
   }
 }
 

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:insure_marts/ui/claim/my_claim_screen.dart';
 import 'package:insure_marts/ui/dashboard/home_screen.dart';
-import 'package:insure_marts/ui/my_insurance/my_insurance_screen1.dart';
+import 'package:insure_marts/ui/my_insurance/my_insurance_screen.dart';
 import 'package:insure_marts/ui/profile/profile_screen.dart';
 import 'package:insure_marts/util/styles.dart';
 
@@ -13,6 +14,7 @@ class _NavigationScreenState extends State<NavigationScreen> {
   final List<Widget> _screens = [
     HomeScreen(),
     MyInsuranceScreen1(),
+    MyClaimScreen(),
     ProfileScreen(),
   ];
 
@@ -58,9 +60,15 @@ class _NavigationScreenState extends State<NavigationScreen> {
                 ),
                 BottomNavigationBarItem(
                   icon: Icon(
-                    Icons.work_outline,
+                    Icons.verified,
                   ),
                   label: 'My Insurance',
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(
+                    Icons.work_outline,
+                  ),
+                  label: 'My Claim',
                 ),
                 BottomNavigationBarItem(
                   icon: Icon(Icons.person),

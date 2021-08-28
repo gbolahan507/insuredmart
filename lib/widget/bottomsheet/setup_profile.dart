@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:insure_marts/util/spacing.dart';
 import 'package:insure_marts/util/styles.dart';
@@ -19,7 +21,6 @@ class _SetupProfileSheetState extends State<SetupProfileSheet> {
     return Container(
       decoration: BoxDecoration(
         color: Colors.white,
-        // borderRadius: BorderRadius.circular(20),
       ),
       padding: MediaQuery.of(context).viewInsets,
       child: Padding(
@@ -31,11 +32,12 @@ class _SetupProfileSheetState extends State<SetupProfileSheet> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                CustomIcon(),
+                CustomIcon(onPressed: () => Navigator.of(context).pop()),
                 CustomText(
                   'Sort By',
                   fontSize: 14,
                   color: Styles.colorBlack,
+                  fontWeight: FontWeight.w700,
                 ),
                 Container(
                   width: 32,
@@ -68,14 +70,13 @@ class _SetupProfileSheetState extends State<SetupProfileSheet> {
                                   // color: Styles.colorGrey,
                                   border: selectedindex == index
                                       ? Border.all(
-                                          color: Styles.colorLightBlue,
-                                          width: 2)
+                                          color: Styles.colorBlue1, width: 2)
                                       : Border.all(color: Styles.colorGrey)),
                               child: selectedindex == index
                                   ? Container(
                                       decoration: BoxDecoration(
                                           shape: BoxShape.circle,
-                                          color: Styles.colorLightBlue),
+                                          color: Styles.colorBlue1),
                                     )
                                   : SizedBox()),
                           horizontalSpaceSmall,
@@ -96,10 +97,7 @@ class _SetupProfileSheetState extends State<SetupProfileSheet> {
                                     color: selectedindex == index
                                         ? Styles.colorBlack
                                         : Styles.colorGrey,
-                                    onTap: () {}
-                                    // locator<NavigationService>()
-                                    //     .navigateToReplacing(OnboardView),
-                                    ),
+                                    onTap: () {}),
                               ],
                             ),
                           ),
@@ -110,15 +108,14 @@ class _SetupProfileSheetState extends State<SetupProfileSheet> {
                 }),
             verticalSpaceSmall,
             CustomButton(
-              title: 'APPLY',
+              title: 'Apply',
               fontSize: 12,
               height: 50,
-              buttonColor: Styles.appBackground1,
+              buttonColor: Styles.colorBlue3,
               onPressed: () {
-                // Navigator.push(
-                //     context,
-                //     MaterialPageRoute(
-                //         builder: (context) => CarUploadScreen5()));
+                selectedindex == null
+                    ? log('no object selected')
+                    : log('$selectedindex has been picked');
               },
             ),
           ],

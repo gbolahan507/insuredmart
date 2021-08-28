@@ -13,31 +13,39 @@ class Styles {
   //  insure_marts
   //  $,
 
-  static Color appBackground1 = const Color(0xff03588c);
   static Color colorGreyLight = const Color(0xffdbd9d9);
+  static Color colorGrey1 = const Color(0xfff3f3f3);
+  static Color colorGrey2 = const Color(0xffd6d6d6);
+
   static Color colorWhite = const Color(0xffffffff);
   static Color appBackground2 = const Color(0xff023859);
   static Color colorLightgreen = const Color(0xff03a688);
   static Color colorBlack = const Color(0xff222222);
+  static Color colorBlack2 = const Color(0xff000000);
+  static Color colorBlue3 = const Color(0xff03588c);
+
+
   static Color colorDeepGreen = const Color(0xff038c7f);
+  static Color colorGreen1 = const Color(0xff1c89a7);
+
   static Color colorNavGreen = const Color(0xff038c7f);
   static Color colorLemon = const Color(0xff6bffff);
-  static Color colorLightBlue = const Color(0xff2269b3);
+  static Color colorBlue1 = const Color(0xff2269b3);
+  static Color colorBlue2 = const Color(0xff213267);
+
   static Color colorBoxBackground = const Color(0xffFAFAFA);
   static Color colorBoxBorder = const Color(0xffCCCCCC);
   static Color colorLightLemon = const Color(0xffB3E4DB);
   static Color colorDeepGrey = const Color(0xff808080);
   static Color coloratm1 = const Color(0xff8688bc);
   static Color coloratm2 = const Color(0xff232558);
+  static Color colorblue2 = const Color(0xff213267);
+
   static Color colorRed = const Color(0xffff0000);
   static Color colorLightPink = const Color(0xffFDEFE7);
   static Color colorDeepPink = const Color(0xffEA5B0C);
   static Color colordeepgrey = const Color(0xffF7F4F4);
-
-
-
-
-
+  static Color colorLightBluerating = const Color(0xff1C89A7);
   static Color colorLightPurple = const Color(0xff6D77A2);
   static Color colorOrange = const Color(0xffF2994A);
 

@@ -15,10 +15,10 @@ class AuthViewModel extends BaseModel {
   String error2;
   String error3;
   String token;
+  bool hasValidator;
 
   LoginModel loginModel;
   SignupModel signupModel;
-
 
   Future<void> createUsers(
       BuildContext context, Map<String, String> data) async {
@@ -29,9 +29,11 @@ class AuthViewModel extends BaseModel {
           title: 'Success', description: 'Login into your account');
       navigate.navigateToReplacing(LoginView);
       setBusy(false);
+      hasValidator = true;
       notifyListeners();
     } on CustomException catch (e) {
       error2 = e.message;
+      hasValidator = false;
       setBusy(false);
       showSnackBar(context, 'Error', '${e.message}');
       showErrorDialog(e);
@@ -47,12 +49,15 @@ class AuthViewModel extends BaseModel {
       AppCache.saveUser(loginModel);
       navigate.navigateToReplacing(BottomNavView);
       setBusy(false);
+      hasValidator = true;
       notifyListeners();
     } on CustomException catch (e) {
-      error2 = e.message;
       setBusy(false);
-      showSnackBar(context, 'Error', '${e.message}');
-      showErrorDialog(e);
+      // showSnackBar(context, 'Error', '${e.message}');
+      // showErrorDialog(e);
+      error3 = e.message;
+      print(e.message);
+      hasValidator = false;
       notifyListeners();
     }
   }

@@ -20,7 +20,7 @@ List<HomePageModel> homepageModel = [
   ),
   HomePageModel(
     image: 'images/health.png',
-    title: 'Fire Insurance',
+    title: 'Fire',
     contents:
         'At faucibus etiam vel lobortis enim fermentum a. At nec enim tellus senectus turpis auctor pretium non.',
     status: false,
@@ -33,7 +33,7 @@ List<HomePageModel> homepageModel = [
     status: false,
   ),
   HomePageModel(
-    image: 'images/house.png',
+    image: 'images/marine.png',
     title: 'Marine Cargo Insurance',
     contents:
         'At faucibus etiam vel lobortis enim fermentum a. At nec enim tellus senectus turpis auctor pretium non.',
@@ -47,31 +47,135 @@ List<HomePageModel> homepageModel = [
     status: false,
   ),
   HomePageModel(
-    image: 'images/house.png',
+    image: 'images/burglary.png',
     title: 'Burglary Insurance',
     contents:
         'At faucibus etiam vel lobortis enim fermentum a. At nec enim tellus senectus turpis auctor pretium non.',
     status: false,
   ),
   HomePageModel(
-    image: 'images/house.png',
+    image: 'images/gadget.png',
     title: 'Gadget Insurance',
     contents:
         'At faucibus etiam vel lobortis enim fermentum a. At nec enim tellus senectus turpis auctor pretium non.',
     status: false,
   ),
   HomePageModel(
-    image: 'images/house.png',
+    image: 'images/travel.png',
     title: 'Travel Insurance',
     contents:
         'At faucibus etiam vel lobortis enim fermentum a. At nec enim tellus senectus turpis auctor pretium non.',
     status: false,
   ),
   HomePageModel(
-    image: 'images/house.png',
+    image: 'images/accident.png',
     title: 'Personal Accidental Insurance',
     contents:
         'At faucibus etiam vel lobortis enim fermentum a. At nec enim tellus senectus turpis auctor pretium non.',
     status: false,
+  ),
+];
+
+List<String> extension = [
+  'EXCESS BUY BACK  (EBB)',
+  'Flood Extension',
+  'SRCC Extension',
+  'Additional Third Party\nProperty Damage',
+  'Vehicle tracking device',
+  'Renew tracking device',
+  'Renew vehicle license',
+  'Renew road worthiness',
+  'Renew Hackney Permit',
+  'Delete personal effects',
+];
+
+class InsuranceTypeModel {
+  final String title;
+  final String coverNumber;
+  final String policyYear;
+  final String price;
+  final String image;
+
+  InsuranceTypeModel(
+      {this.title, this.coverNumber, this.policyYear, this.price, this.image});
+}
+
+List<InsuranceTypeModel> insuranceTypeModel = [
+  InsuranceTypeModel(
+    title: 'Custodian & Allied Insurance',
+    coverNumber: '2',
+    policyYear: '1',
+    price: '1000',
+    image: 'images/Bitmap.png',
+  ),
+  InsuranceTypeModel(
+    title: 'Leadway Assurance Plc',
+    coverNumber: '2',
+    policyYear: '1',
+    price: '1000',
+    image: 'images/Bitmap2.png',
+  ),
+  InsuranceTypeModel(
+    title: 'Alliance Nigeria Insurance Plc',
+    coverNumber: '2',
+    policyYear: '1',
+    price: '1000',
+    image: 'images/Bitmap5.png',
+  ),
+  InsuranceTypeModel(
+    title: 'Maniard Insurance Plc',
+    coverNumber: '2',
+    policyYear: '1',
+    price: '1000',
+    image: 'images/Bitmap4.png',
+  ),
+  InsuranceTypeModel(
+    title: 'NEM Insurance Plc',
+    coverNumber: '2',
+    policyYear: '1',
+    price: '1000',
+    image: 'images/nem.png',
+  ),
+  InsuranceTypeModel(
+    title: 'Mutual Benefits Assurance Plc',
+    coverNumber: '2',
+    policyYear: '1',
+    price: '1000',
+    image: 'images/mutual.png',
+  ),
+  InsuranceTypeModel(
+    title: 'Sovereign Trust Insurance PLC',
+    coverNumber: '2',
+    policyYear: '1',
+    price: '1000',
+    image: 'images/strust.png',
+  ),
+  InsuranceTypeModel(
+    title: 'Zenith Insurance PLC',
+    coverNumber: '2',
+    policyYear: '1',
+    price: '1000',
+    image: 'images/zenith.png',
+  ),
+  InsuranceTypeModel(
+    title: 'AIICO Insurance PLC',
+    coverNumber: '2',
+    policyYear: '1',
+    price: '1000',
+    image: 'images/allico.png',
+  ),
+  InsuranceTypeModel(
+    title: 'Consolidated Hallmark Insurance',
+    coverNumber: '2',
+    policyYear: '1',
+    price: '1000',
+    image: 'images/hallmark.png',
+  ),
+  InsuranceTypeModel(
+    title: 'Cornerstone Insurance Plc',
+    coverNumber: '2',
+    policyYear: '1',
+    price: '1000',
+    image: 'images/cornerstone.png',
   ),
 ];

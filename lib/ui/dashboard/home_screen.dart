@@ -8,9 +8,6 @@ import 'package:insure_marts/widget/bottomsheet/car_inurance_sheet.dart';
 import 'package:insure_marts/widget/bottomsheet/check_profile_sheet.dart';
 import 'package:insure_marts/widget/custom_text_widget.dart';
 
-
-
-
 class HomeScreen extends StatefulWidget {
   @override
   _HomeScreenState createState() => _HomeScreenState();
@@ -118,7 +115,7 @@ class HomePageBox extends StatelessWidget {
             gradient: LinearGradient(
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
-                colors: [Styles.appBackground1, Styles.appBackground2])),
+                colors: [Styles.colorBlue3, Styles.appBackground2])),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

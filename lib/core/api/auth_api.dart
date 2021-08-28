@@ -33,14 +33,11 @@ class AuthApi extends BaseAPI {
     }
   }
 
-
-
-
-
   Future<LoginModel> loginUsers(Map<String, dynamic> data) async {
     try {
       var response = await Dio()
           .post("$baseUrl/login", data: data, options: defaultOptions);
+      log.d(response.statusCode);
       switch (response.statusCode) {
         case SERVER_OKAY:
           return LoginModel.fromJson(response.data);
@@ -53,7 +50,6 @@ class AuthApi extends BaseAPI {
       throw CustomException(DioErrorUtil.handleError(e));
     }
   }
-
 
   logOut() {
     Future.delayed(const Duration(seconds: 2), () => AppCache.clear());

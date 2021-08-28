@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:insure_marts/core/view_model/dBoardNotificatio_vm.dart';
+import 'package:insure_marts/core/view_model/others_vm.dart';
 import 'package:insure_marts/util/constant/base_view.dart';
 import 'package:insure_marts/util/spacing.dart';
 import 'package:insure_marts/util/styles.dart';
@@ -11,9 +11,6 @@ import 'package:intl/intl.dart';
 import 'package:list_tile_more_customizable/list_tile_more_customizable.dart';
 import 'package:flutter/cupertino.dart';
 
-
-
-
 class DashBoardNotification extends StatefulWidget {
   @override
   _DashBoardNotificationState createState() => _DashBoardNotificationState();
@@ -22,17 +19,16 @@ class DashBoardNotification extends StatefulWidget {
 class _DashBoardNotificationState extends State<DashBoardNotification> {
   @override
   Widget build(BuildContext context) {
-    return BaseView<DashBoardNotificationViewModel>(
-        onModelReady: (DashBoardNotificationViewModel model) =>
-            model.getNotification(),
-        builder: (_, DashBoardNotificationViewModel model, __) {
+    return BaseView<OthersViewModel>(
+        onModelReady: (OthersViewModel model) => model.getNotification(),
+        builder: (_, OthersViewModel model, __) {
           return Scaffold(
               appBar: PreferredSize(
                 preferredSize: Size.fromHeight(70),
                 child: CustomAppBar(
                   title: 'Notification',
                   check: true,
-                  widget: GestureDetector(
+                  actions: GestureDetector(
                     onTap: () {
                       for (var i in model.notification) {
                         setState(() {
@@ -62,16 +58,16 @@ class _DashBoardNotificationState extends State<DashBoardNotification> {
         });
   }
 
-  buildNotification(DashBoardNotificationViewModel model, int index) {
+  buildNotification(OthersViewModel model, int index) {
     return ListTileMoreCustomizable(
       leading: CustomIcon(
           icon: Icons.notifications,
           color: model.notification[index].newMessage
-              ? Styles.appBackground1
+              ? Styles.colorBlue3
               : Styles.colorGrey),
       title: CustomText(
         '${model.notification[index].heading}',
-        color: Styles.appBackground1,
+        color: Styles.colorBlue3,
         textAlign: TextAlign.left,
         fontWeight: FontWeight.bold,
       ),

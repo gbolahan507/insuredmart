@@ -1,7 +1,7 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:insure_marts/ui/car_upload/testmodel.dart';
+import 'package:insure_marts/widget/bottomsheet/save_continue_sheet.dart';
 import 'package:insure_marts/widget/export.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -56,7 +56,7 @@ class _CarUploadScreen2State extends State<CarUploadScreen2> {
                         builder: (context) => CarUploadScreen3()));
               },
             ),
-            verticalSpaceMedium,
+            verticalSpaceSmall,
             ListView.builder(
                 shrinkWrap: true,
                 physics: NeverScrollableScrollPhysics(),
@@ -74,8 +74,8 @@ class _CarUploadScreen2State extends State<CarUploadScreen2> {
                                 children: [
                                   CustomText(
                                     heads(index),
-                                    fontSize: 12,
-                                    color: Styles.colorBlack,
+                                    fontWeight: FontWeight.w600,
+                                    color: Styles.colorBlack.withOpacity(0.8),
                                   ),
                                 ],
                               ),
@@ -87,7 +87,8 @@ class _CarUploadScreen2State extends State<CarUploadScreen2> {
                                       padding: EdgeInsets.all(0),
                                       height: 70.0,
                                       widget: Image.file(
-                                        File(uploadModel.imageFile.path),
+                                        File(uploadModel.imageFile?.path ??
+                                            'images/uploadimage.png'),
                                         fit: BoxFit.fill,
                                       ))),
                             ],
@@ -104,8 +105,8 @@ class _CarUploadScreen2State extends State<CarUploadScreen2> {
                             children: [
                               CustomText(
                                 heads(index),
-                                fontSize: 12,
-                                color: Styles.colorBlack,
+                                fontWeight: FontWeight.w600,
+                                color: Styles.colorBlack.withOpacity(0.8),
                               ),
                             ],
                           ),
@@ -135,23 +136,20 @@ class _CarUploadScreen2State extends State<CarUploadScreen2> {
                     title: 'CONTINUE',
                     fontSize: 12,
                     height: 50,
-                    buttonColor: Styles.appBackground1,
+                    buttonColor: Styles.colorBlue3,
                     onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => CarUploadScreen3()));
+                      routeTo(context, CarUploadScreen3());
                     },
                   ),
-                  verticalSpaceSmall,
+                   verticalSpaceMedium,
                   CustomButton(
                     title: 'SAVE & CONTINUE LATER',
                     fontSize: 12,
                     height: 50,
-                    textColor: Styles.appBackground1,
+                    textColor: Styles.colorBlue3,
                     buttonColor: Styles.colorWhite,
                     onPressed: () {
-                      routeTo(context, CarUploadScreen2());
+                      save(context);
                     },
                   ),
                   verticalSpaceMedium,
@@ -164,6 +162,12 @@ class _CarUploadScreen2State extends State<CarUploadScreen2> {
       ),
     );
   }
+
+  void save(BuildContext context) => showModalBottomSheet(
+      context: context,
+      builder: (context) {
+        return SaveBottomSheet();
+      });
 
   void takephoto(int index, ImageSource source) async {
     setState(() {

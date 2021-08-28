@@ -13,7 +13,7 @@ export 'package:insure_marts/core/provider/all_toggle_provider.dart';
 export 'package:provider/provider.dart';
 export 'package:insure_marts/widget/custom_container.dart';
 export 'package:insure_marts/ui/my_insurance/dropdown/insurance_dropdown.dart';
-export 'package:insure_marts/ui/car_upload/filter_screen.dart';
+export 'package:insure_marts/ui/car_upload/pages/filter_page.dart';
 export 'package:insure_marts/widget/bottomsheet/setup_profile.dart';
 export 'package:insure_marts/widget/custom_text_widget.dart';
 export 'package:insure_marts/widget/insurance_container.dart';

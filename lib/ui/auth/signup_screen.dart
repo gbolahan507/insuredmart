@@ -125,7 +125,7 @@ class _SignupScreenState extends State<SignupScreen> {
                         fontSize: 13,
                         height: 50,
                         busy: model.busy,
-                        buttonColor: Styles.appBackground1,
+                        buttonColor: Styles.colorBlue3,
                         onPressed: () {
                           final Map<String, String> data = {
                             "fullname": _firstNameController.text,
@@ -170,14 +170,14 @@ class _SignupScreenState extends State<SignupScreen> {
                         text: customTextSpan(
                           text: 'By continue, you agree to our  ',
                           context: context,
-                          fontSize: 14,
+                          fontSize: 13,
                           fontWeight: FontWeight.normal,
                           color: Styles.colorBlack,
                           children: <TextSpan>[
                             customTextSpan(
                               text: 'Terns of use',
                               context: context,
-                              fontSize: 14,
+                              fontSize: 13,
                               fontWeight: FontWeight.bold,
                               color: Styles.colorDeepGreen,
 
@@ -194,14 +194,14 @@ class _SignupScreenState extends State<SignupScreen> {
                         text: customTextSpan(
                           text: 'Already a user  ',
                           context: context,
-                          fontSize: 14,
+                          fontSize: 13,
                           fontWeight: FontWeight.normal,
                           color: Styles.colorBlack,
                           children: <TextSpan>[
                             customTextSpan(
                                 text: 'Login',
                                 context: context,
-                                fontSize: 14,
+                                fontSize: 13,
                                 fontWeight: FontWeight.bold,
                                 color: Styles.colorDeepGreen,
                                 onTap: () {

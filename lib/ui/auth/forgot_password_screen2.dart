@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:insure_marts/ui/auth/login_screen.dart';
+import 'package:insure_marts/util/router.dart';
 import 'package:insure_marts/util/spacing.dart';
 import 'package:insure_marts/util/styles.dart';
 import 'package:insure_marts/util/util.dart';
@@ -16,7 +18,7 @@ class ForgotPasswordScreen2 extends StatelessWidget {
                 backgroundColor: Styles.colorWhite,
                 title: CustomText(
                   'Forgot password',
-                  fontSize: 18,
+                  fontSize: 14,
                   color: Styles.colorBlack,
                 ),
                 centerTitle: true,
@@ -26,6 +28,7 @@ class ForgotPasswordScreen2 extends StatelessWidget {
                   size: 20,
                 )),
             body: Container(
+              color: Styles.colorWhite,
               padding: EdgeInsets.symmetric(horizontal: 20),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -35,7 +38,7 @@ class ForgotPasswordScreen2 extends StatelessWidget {
                     children: [
                       CustomText(
                         'Recovery Email Sent',
-                        fontSize: 20,
+                        fontSize: 16,
                         fontWeight: FontWeight.w700,
                         color: Styles.colorBlack.withOpacity(0.8),
                       ),
@@ -49,7 +52,6 @@ class ForgotPasswordScreen2 extends StatelessWidget {
                         'An email has been sent to you with a link to recover your password',
                         fontSize: 14,
                         textAlign: TextAlign.left,
-                        fontWeight: FontWeight.w700,
                         color: Styles.colorBlack.withOpacity(0.8),
                       )),
                     ],
@@ -59,9 +61,10 @@ class ForgotPasswordScreen2 extends StatelessWidget {
                   //  verticalSpaceMedium,
                   CustomButton(
                     title: 'GO BACK TO LOGIN',
-                    fontSize: 14,
+                    fontSize: 13,
                     height: 50,
-                    buttonColor: Styles.appBackground1,
+                    buttonColor: Styles.colorBlue3,
+                    onPressed: () => routeToReplace(context, LoginScreen()),
                   ),
                 ],
               ),

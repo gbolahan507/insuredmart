@@ -38,7 +38,7 @@ class MyAppBar extends StatelessWidget {
                     context: context,
                     fontSize: 14,
                     fontWeight: FontWeight.bold,
-                    color: Styles.appBackground1,
+                    color: Styles.colorBlue3,
                   ),
                 ],
               ),

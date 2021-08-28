@@ -39,7 +39,7 @@ class DotCircle extends StatelessWidget {
               child: CustomIcon(
                 icon: icon ?? Icons.arrow_back_ios,
                 size: 12,
-                color: dotColor ?? Styles.colorLightBlue,
+                color: dotColor ?? Styles.colorBlue1,
               ),
             ),
       ),

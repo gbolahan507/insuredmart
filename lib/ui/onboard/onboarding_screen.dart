@@ -35,7 +35,7 @@ class _OnboardingScreen1State extends State<OnboardingScreen1> {
             gradient: LinearGradient(
             begin: Alignment.centerLeft,
             end: Alignment.centerRight,
-            colors: [Styles.appBackground1, Styles.appBackground2])
+            colors: [Styles.colorBlue3, Styles.appBackground2])
         ),
             child: Column(
               children: [

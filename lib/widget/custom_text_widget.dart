@@ -17,6 +17,8 @@ class CustomText extends StatelessWidget {
       this.letterSpacing,
       this.maxLines,
       this.overflow,
+      this.mainAxisAlignment,
+      this.crossAxisAlignment,
       this.fontFamily})
       : super(key: key);
   final String text;
@@ -33,12 +35,14 @@ class CustomText extends StatelessWidget {
   final double bottomMargin;
   final double textheight;
   final TextAlign textAlign;
+  final mainAxisAlignment;
+  final crossAxisAlignment;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin:
-          EdgeInsets.fromLTRB(leftMargin, topMargin, rightMargin, bottomMargin),
+      margin: EdgeInsets.fromLTRB(
+          leftMargin, topMargin, rightMargin, bottomMargin),
       child: Text(
         text,
         textAlign: textAlign ?? TextAlign.center,
@@ -49,7 +53,7 @@ class CustomText extends StatelessWidget {
             letterSpacing: letterSpacing,
             fontFamily: fontFamily ?? 'Crossten',
             fontSize: screenAwareSize(fontSize ?? 14, context, width: true),
-            fontWeight: fontWeight,
+            fontWeight:  fontWeight,
             color: color ?? Styles.colorGrey),
       ),
     );
